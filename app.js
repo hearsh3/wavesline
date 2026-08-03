@@ -17,10 +17,11 @@ const MIN = 60000, HOUR = 60 * MIN, DAY = 24 * HOUR;
 const PROVIDERS = {
   google: {
     label: 'Google (Vertex AI)',
-    default: 'gemini-2.5-pro',
+    default: 'gemini-3.1-pro-preview',
     models: [
-      { id: 'gemini-2.5-pro', label: 'Gemini 2.5 Pro', note: 'flagship — best for nuanced dialogue' },
-      { id: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash', note: 'fast and cheap, blunter' },
+      { id: 'gemini-3.1-pro-preview', label: 'Gemini 3.1 Pro (preview)', note: 'flagship — best for nuanced dialogue' },
+      { id: 'gemini-3.5-flash', label: 'Gemini 3.5 Flash', note: 'fast and cheap, blunter' },
+      { id: 'gemini-3.6-flash', label: 'Gemini 3.6 Flash', note: 'newest flash — quicker still' },
     ],
   },
   anthropic: {

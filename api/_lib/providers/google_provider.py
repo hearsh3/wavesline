@@ -19,6 +19,7 @@ import json
 import urllib.error
 import urllib.request
 
+from ..models import GOOGLE_DEFAULT
 from ..prompt import RULES, SCHEMA, WORLD
 from .base import Provider, ProviderError
 
@@ -87,7 +88,7 @@ class GoogleProvider(Provider):
         # A trivial, cheap generateContent call — this exercises auth, the
         # project/region combo, and API enablement all at once, which a bare
         # OAuth token mint would not catch (e.g. Vertex AI API not enabled).
-        url = _endpoint(project, location, "gemini-2.5-flash")
+        url = _endpoint(project, location, GOOGLE_DEFAULT)
         _post(url, token, {
             "contents": [{"role": "user", "parts": [{"text": "ping"}]}],
             "generationConfig": {"maxOutputTokens": 1},

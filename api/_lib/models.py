@@ -47,10 +47,11 @@ FALLBACK_MODEL = "claude-opus-4-8"
 
 # ══ Google (Vertex AI) ══════════════════════════════════════════
 GOOGLE_MODELS = {
-    "gemini-2.5-pro": {"label": "Gemini 2.5 Pro", "note": "flagship — best for nuanced dialogue"},
-    "gemini-2.5-flash": {"label": "Gemini 2.5 Flash", "note": "fast and cheap, blunter"},
+    "gemini-3.1-pro-preview": {"label": "Gemini 3.1 Pro (preview)", "note": "flagship — best for nuanced dialogue"},
+    "gemini-3.5-flash": {"label": "Gemini 3.5 Flash", "note": "fast and cheap, blunter"},
+    "gemini-3.6-flash": {"label": "Gemini 3.6 Flash", "note": "newest flash — quicker still"},
 }
-GOOGLE_DEFAULT = "gemini-2.5-pro"
+GOOGLE_DEFAULT = "gemini-3.1-pro-preview"
 
 # ══ OpenAI ═══════════════════════════════════════════════════════
 OPENAI_MODELS = {
