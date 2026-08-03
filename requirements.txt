@@ -1,3 +1,4 @@
 anthropic>=0.40
 openai>=1.50
 google-auth>=2.30
+requests>=2.31
