@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Terminal — WavesLine</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══ the device ══════════════════════════════════════════ -->
+<div id="terminal" class="terminal">
+
+  <!-- flowing background -->
+  <svg class="tide" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="tg1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0"   stop-color="#1de3ff" stop-opacity=".30"/>
+        <stop offset="0.6" stop-color="#2f6bff" stop-opacity=".14"/>
+        <stop offset="1"   stop-color="#7a4dff" stop-opacity=".05"/>
+      </linearGradient>
+      <linearGradient id="tg2" x1="1" y1="0" x2="0" y2="1">
+        <stop offset="0"   stop-color="#ffd47a" stop-opacity=".18"/>
+        <stop offset="1"   stop-color="#1de3ff" stop-opacity=".04"/>
+      </linearGradient>
+    </defs>
+    <path class="tide-a" fill="url(#tg1)" d=""/>
+    <path class="tide-b" fill="url(#tg2)" d=""/>
+  </svg>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- status bar -->
+  <header class="statusbar">
+    <span class="sb-left"><i class="glyph-rhomb"></i> LAHAI-ROI · BALDUR RELAY</span>
+    <button class="sb-mid" id="sbClock" title="Terminal time — let time pass">--:--</button>
+    <span class="sb-right">
+      <span class="sb-sig" title="resonance link"><i></i><i></i><i></i><i></i></span>
+      <span class="sb-batt"><b style="width:82%"></b></span>
+      <span class="sb-pc">82</span>
+    </span>
+  </header>
+
+  <!-- let time pass -->
+  <div class="timepop" id="timePop" hidden>
+    <b>Terminal time</b>
+    <div class="tp-now" id="tpNow"></div>
+    <div class="tp-grid">
+      <button data-skip="1h">+1 hour</button>
+      <button data-skip="8h">+8 hours</button>
+      <button data-skip="morning">next morning</button>
+      <button data-skip="1d">+1 day</button>
+      <button data-skip="3d">+3 days</button>
+      <button data-skip="7d">+1 week</button>
+    </div>
+    <div class="tp-custom">
+      <input id="tpAmt" type="number" min="1" max="999" value="12" aria-label="amount">
+      <select id="tpUnit" aria-label="unit">
+        <option value="h">hours</option>
+        <option value="d">days</option>
+      </select>
+      <button id="tpGo">Skip</button>
+    </div>
+    <div class="tp-foot">
+      <span id="tpSkew"></span>
+      <button id="tpReset">Reset</button>
+    </div>
+    <p class="tp-note">Threads keep their own timestamps, so they recede into the past.
+      Anything a thread was waiting on has happened by the time you arrive.</p>
+  </div>
+
+  <!-- ══ home screen ══════════════════════════════════════ -->
+  <section id="home" class="screen home is-on">
+    <div class="home-clock">
+      <div class="hc-time" id="homeTime">--:--</div>
+      <div class="hc-date" id="homeDate"></div>
+      <div class="hc-sub">Reactor Drive nominal · Helios 99.4% · no precipitation scheduled</div>
+    </div>
+
+    <div class="apps">
+      <button class="app" id="openWavesLine" aria-label="Open WavesLine">
+        <span class="app-icon">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <defs><linearGradient id="wl" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#5ef0ff"/><stop offset=".55" stop-color="#3f8cff"/><stop offset="1" stop-color="#a77bff"/>
+            </linearGradient></defs>
+            <path d="M6 40c7-11 12 9 19-2s12 9 19-2 8 4 14-3" fill="none" stroke="url(#wl)" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M6 26c7-11 12 9 19-2s12 9 19-2 8 4 14-3" fill="none" stroke="url(#wl)" stroke-width="3" stroke-linecap="round" opacity=".45"/>
+          </svg>
+        </span>
+        <span class="app-name">WavesLine</span>
+        <span class="app-badge" id="homeBadge" hidden>0</span>
+      </button>
+
+      <div class="app is-empty"><span class="app-icon"></span><span class="app-name">—</span></div>
+      <div class="app is-empty"><span class="app-icon"></span><span class="app-name">—</span></div>
+      <div class="app is-empty"><span class="app-icon"></span><span class="app-name">—</span></div>
+    </div>
+
+    <p class="home-foot">Terminal OS 4.2 · registered to <b>MEI</b> · Rabelle College, Synchronist track</p>
+  </section>
+
+  <!-- ══ WavesLine ════════════════════════════════════════ -->
+  <section id="app" class="screen app-wl" hidden>
+
+    <!-- chat list -->
+    <aside class="pane-list" id="paneList">
+      <div class="wl-head">
+        <button class="icon-btn back-home" id="toHome" title="Home">‹</button>
+        <div class="wl-brand"><span class="wl-mark"></span> WavesLine</div>
+        <button class="icon-btn" id="reshuffle" title="Retune — draw a fresh week">⟳</button>
+      </div>
+      <div class="wl-me">
+        <img class="av av-md" src="avatars/mei.webp" alt="">
+        <div><b>Mei</b><span>the Rover · @rover</span></div>
+      </div>
+      <div class="wl-search"><input id="search" type="search" placeholder="Search chats" autocomplete="off"></div>
+      <div class="chatlist" id="chatlist"></div>
+    </aside>
+
+    <!-- thread -->
+    <main class="pane-thread" id="paneThread">
+      <div class="th-head" id="thHead">
+        <button class="icon-btn back-list" id="toList" title="Chats">‹</button>
+        <div class="th-id"></div>
+        <button class="icon-btn weave-btn" id="openWeave" title="Signal Weave">⌁</button>
+      </div>
+
+      <div class="msgs" id="msgs" tabindex="0"></div>
+
+      <div class="gapbar" id="gapbar" hidden>
+        <span id="gapTxt"></span>
+        <button id="gapGo" type="button">Catch up</button>
+      </div>
+
+      <div class="typing" id="typing" hidden><span></span><span></span><span></span><em></em></div>
+
+      <div class="attach-tray" id="tray" hidden></div>
+
+      <form class="composer" id="composer" autocomplete="off">
+        <label class="icon-btn attach" title="Attach image">
+          📎<input type="file" id="pickImg" accept="image/*" multiple hidden>
+        </label>
+        <textarea id="input" rows="1" placeholder="Message…"></textarea>
+        <button class="send" id="send" type="submit" title="Send">➤</button>
+      </form>
+    </main>
+
+    <!-- signal weave -->
+    <aside class="pane-weave" id="paneWeave" hidden>
+      <div class="wv-head">
+        <b>⌁ Signal Weave</b>
+        <button class="icon-btn" id="closeWeave" title="Close">×</button>
+      </div>
+
+      <div class="wv-status">
+        <span class="dot" id="wvDot"></span>
+        <span id="wvBackend">checking…</span>
+      </div>
+
+      <label class="wv-l">Model</label>
+      <select id="wvModel"></select>
+      <p class="wv-note" id="wvNote"></p>
+
+      <label class="wv-l">Steer <small>(optional)</small></label>
+      <input id="wvSteer" type="text" placeholder="what's going on right now">
+
+      <div class="wv-btns">
+        <button id="wvReply"  class="wv-b primary">Ask for replies</button>
+        <button id="wvAmbient" class="wv-b">New chatter</button>
+      </div>
+
+      <label class="wv-l">Situation file</label>
+      <div class="dropzone" id="wvDrop">
+        <b>Drop a .txt or .md</b>
+        <span>the thread reacts to what's in it</span>
+        <input type="file" id="wvFile" accept=".txt,.md,.markdown,text/plain" hidden>
+      </div>
+      <div class="wv-file" id="wvFileInfo" hidden></div>
+
+      <label class="wv-toggle"><input type="checkbox" id="wvAuto"> Reply to me automatically</label>
+
+      <label class="wv-l">Log</label>
+      <div class="wv-log" id="wvLog"></div>
+    </aside>
+  </section>
+</div>
+
+<script src="data.js"></script>
+<script src="chats.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
