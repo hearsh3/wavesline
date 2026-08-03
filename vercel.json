@@ -1,0 +1,6 @@
+{
+  "functions": {
+    "api/generate.py": { "maxDuration": 60 },
+    "api/health.py": { "maxDuration": 30 }
+  }
+}

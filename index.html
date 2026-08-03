@@ -149,7 +149,41 @@
     <aside class="pane-weave" id="paneWeave" hidden>
       <div class="wv-head">
         <b>⌁ Signal Weave</b>
-        <button class="icon-btn" id="closeWeave" title="Close">×</button>
+        <div class="wv-head-btns">
+          <button class="icon-btn" id="openWeaveCfg" title="Provider settings">⚙</button>
+          <button class="icon-btn" id="closeWeave" title="Close">×</button>
+        </div>
+      </div>
+
+      <div class="wv-cfg-pop" id="weaveCfgPop" hidden>
+        <b>Provider</b>
+        <select id="wcProvider">
+          <option value="google">Google (Vertex AI)</option>
+          <option value="anthropic">Anthropic (Claude)</option>
+          <option value="openai">OpenAI</option>
+        </select>
+
+        <div class="wc-fields" id="wcFieldsAnthropic" hidden>
+          <label class="wv-l">API key</label>
+          <input type="password" id="wcAnthropicKey" placeholder="sk-ant-..." autocomplete="off">
+        </div>
+
+        <div class="wc-fields" id="wcFieldsOpenai" hidden>
+          <label class="wv-l">API key</label>
+          <input type="password" id="wcOpenaiKey" placeholder="sk-..." autocomplete="off">
+        </div>
+
+        <div class="wc-fields" id="wcFieldsGoogle" hidden>
+          <label class="wv-l">Project ID</label>
+          <input type="text" id="wcGoogleProject" placeholder="my-gcp-project" autocomplete="off">
+          <label class="wv-l">Region</label>
+          <input type="text" id="wcGoogleLocation" placeholder="us-east5" autocomplete="off">
+          <label class="wv-l">Service account key <small>(JSON)</small></label>
+          <textarea id="wcGoogleSA" rows="4" placeholder="paste the full service-account JSON key"></textarea>
+        </div>
+
+        <button class="wv-b primary" id="wcSave" type="button">Save</button>
+        <p class="wc-note">Stored only in this browser and sent with each request — never saved server-side.</p>
       </div>
 
       <div class="wv-status">

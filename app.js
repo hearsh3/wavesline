@@ -11,6 +11,72 @@ const rnd  = n => Math.floor(Math.random() * n);
 const pick = a => a[rnd(a.length)];
 const MIN = 60000, HOUR = 60 * MIN, DAY = 24 * HOUR;
 
+/* Signal Weave providers. Mirrors api/_lib/models.py — keep the two in sync
+   by hand; this table only drives the settings menu and dropdown, the
+   server independently validates whatever model id actually gets sent. */
+const PROVIDERS = {
+  google: {
+    label: 'Google (Vertex AI)',
+    default: 'gemini-2.5-pro',
+    models: [
+      { id: 'gemini-2.5-pro', label: 'Gemini 2.5 Pro', note: 'flagship — best for nuanced dialogue' },
+      { id: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash', note: 'fast and cheap, blunter' },
+    ],
+  },
+  anthropic: {
+    label: 'Anthropic (Claude)',
+    default: 'claude-opus-4-8',
+    models: [
+      { id: 'claude-opus-4-8', label: 'Opus 4.8', note: 'sharpest voices — the default' },
+      { id: 'claude-sonnet-5', label: 'Sonnet 5', note: 'close to Opus, quick on batches' },
+      { id: 'claude-fable-5', label: 'Fable 5', note: 'most capable, priciest — thinks on every turn' },
+      { id: 'claude-haiku-4-5', label: 'Haiku 4.5', note: 'cheapest — blunter, more literal' },
+    ],
+  },
+  openai: {
+    label: 'OpenAI',
+    default: 'gpt-5',
+    models: [
+      { id: 'gpt-5', label: 'GPT-5', note: 'flagship' },
+      { id: 'gpt-5-mini', label: 'GPT-5 mini', note: 'cheaper, quicker' },
+    ],
+  },
+};
+const DEFAULT_PROVIDER = 'google';
+
+/* Weave provider + credentials, pasted into the settings menu and kept only
+   in this browser — sent per-request, never stored server-side. */
+const WEAVE_CFG_KEY = 'wl.weaveCfg';
+function loadWeaveCfg() {
+  const base = { provider: DEFAULT_PROVIDER, google: {}, anthropic: {}, openai: {} };
+  try {
+    const saved = JSON.parse(localStorage.getItem(WEAVE_CFG_KEY) || 'null');
+    if (saved && typeof saved === 'object') {
+      return Object.assign(base, saved, {
+        google: Object.assign({}, base.google, saved.google),
+        anthropic: Object.assign({}, base.anthropic, saved.anthropic),
+        openai: Object.assign({}, base.openai, saved.openai),
+      });
+    }
+  } catch { /* private mode or corrupt value */ }
+  return base;
+}
+function saveWeaveCfg() {
+  try { localStorage.setItem(WEAVE_CFG_KEY, JSON.stringify(state.weaveCfg)); } catch { /* private mode */ }
+}
+function currentCredentials() {
+  const p = state.weaveCfg.provider;
+  const c = state.weaveCfg[p] || {};
+  return p === 'google'
+    ? { projectId: c.projectId || '', location: c.location || '', serviceAccountJson: c.serviceAccountJson || '' }
+    : { apiKey: c.apiKey || '' };
+}
+function hasCredentials() {
+  const p = state.weaveCfg.provider;
+  const c = state.weaveCfg[p] || {};
+  return p === 'google' ? !!(c.projectId && c.location && c.serviceAccountJson) : !!c.apiKey;
+}
+
 /* Terminal time. `skew` is how far ahead of the wall clock the world has been
    pushed; NOW() is the only clock anything else is allowed to read. Messages
    keep the absolute timestamp they were written at, so pushing the clock
@@ -20,7 +86,7 @@ const state = {
   threads: {},        // id -> {meta, msgs, unread}
   open: null,
   weave: false,
-  models: [],
+  weaveCfg: loadWeaveCfg(),
   backend: null,
   busy: false,
   doc: null,          // {name, text}
@@ -507,25 +573,46 @@ function log(msg, cls = '') {
   el.scrollTop = el.scrollHeight;
 }
 
-async function health() {
+function populateModels() {
+  const p = state.weaveCfg.provider;
+  const cfg = PROVIDERS[p];
+  const saved = (state.weaveCfg[p] || {}).model;
+  const sel = $('#wvModel');
+  sel.innerHTML = '';
+  cfg.models.forEach(m => {
+    const o = document.createElement('option');
+    o.value = m.id; o.textContent = m.label; o.dataset.note = m.note || '';
+    if (m.id === (saved || cfg.default)) o.selected = true;
+    sel.appendChild(o);
+  });
+  showNote();
+}
+
+async function refreshWeaveStatus() {
+  populateModels();
+
+  if (!hasCredentials()) {
+    state.backend = null;
+    $('#wvDot').className = 'dot bad';
+    $('#wvBackend').textContent = 'offline — set up a provider';
+    gate();
+    return;
+  }
+
+  $('#wvDot').className = 'dot busy';
+  $('#wvBackend').textContent = 'checking…';
   try {
-    const r = await fetch('api/health');
-    const j = await r.json();
-    state.models = j.models || [];
-    const sel = $('#wvModel');
-    sel.innerHTML = '';
-    state.models.forEach(m => {
-      const o = document.createElement('option');
-      o.value = m.id; o.textContent = m.label; o.dataset.note = m.note || '';
-      if (m.id === j.default) o.selected = true;
-      sel.appendChild(o);
+    const r = await fetch('api/health', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ provider: state.weaveCfg.provider, credentials: currentCredentials() }),
     });
-    showNote();
-    if (!r.ok || !j.backend) throw new Error(j.error || 'no backend');
-    state.backend = j.backend;
+    const j = await r.json();
+    if (!r.ok || !j.ok) throw new Error(j.error || 'no backend');
+    state.backend = PROVIDERS[state.weaveCfg.provider].label;
     $('#wvDot').className = 'dot ok';
-    $('#wvBackend').textContent = j.backend;
-    log('weave ready · ' + j.backend, 'ok');
+    $('#wvBackend').textContent = state.backend;
+    log('weave ready · ' + state.backend, 'ok');
   } catch (err) {
     state.backend = null;
     $('#wvDot').className = 'dot bad';
@@ -596,6 +683,8 @@ async function generate(mode) {
   const model = $('#wvModel').value;
   const body = {
     mode, model,
+    provider: state.weaveCfg.provider,
+    credentials: currentCredentials(),
     steer: $('#wvSteer').value.trim(),
     thread: threadPayload(),
     document: mode === 'document' ? state.doc : null,
@@ -701,6 +790,36 @@ function toggleWeave(on) {
   $('#paneWeave').hidden = !state.weave;
   $('#app').classList.toggle('weave-open', state.weave);
   $('#openWeave').classList.toggle('is-on', state.weave);
+  if (!state.weave) toggleWeaveCfg(false);
+}
+
+/* ── provider settings popover ────────────────────────────── */
+function showProviderFields(p) {
+  $('#wcFieldsAnthropic').hidden = p !== 'anthropic';
+  $('#wcFieldsOpenai').hidden = p !== 'openai';
+  $('#wcFieldsGoogle').hidden = p !== 'google';
+}
+
+function paintWeaveCfg() {
+  const p = state.weaveCfg.provider;
+  $('#wcProvider').value = p;
+  showProviderFields(p);
+  const c = state.weaveCfg[p] || {};
+  if (p === 'anthropic') $('#wcAnthropicKey').value = c.apiKey || '';
+  if (p === 'openai') $('#wcOpenaiKey').value = c.apiKey || '';
+  if (p === 'google') {
+    $('#wcGoogleProject').value = c.projectId || '';
+    $('#wcGoogleLocation').value = c.location || '';
+    $('#wcGoogleSA').value = c.serviceAccountJson || '';
+  }
+}
+
+function toggleWeaveCfg(on) {
+  const pop = $('#weaveCfgPop');
+  const show = on ?? pop.hidden;
+  pop.hidden = !show;
+  $('#openWeaveCfg').classList.toggle('is-on', show);
+  if (show) paintWeaveCfg();
 }
 
 function retune() {
@@ -743,9 +862,33 @@ function boot() {
 
   $('#openWeave').onclick = () => toggleWeave();
   $('#closeWeave').onclick = () => toggleWeave(false);
-  $('#wvModel').onchange = showNote;
+  $('#wvModel').onchange = () => {
+    showNote();
+    const p = state.weaveCfg.provider;
+    if (state.weaveCfg[p]) { state.weaveCfg[p].model = $('#wvModel').value; saveWeaveCfg(); }
+  };
   $('#wvReply').onclick   = () => generate('reply');
   $('#wvAmbient').onclick = () => generate('ambient');
+
+  // provider settings
+  $('#openWeaveCfg').onclick = e => { e.stopPropagation(); toggleWeaveCfg(); };
+  $('#weaveCfgPop').onclick = e => e.stopPropagation();
+  document.addEventListener('click', () => toggleWeaveCfg(false));
+  $('#wcProvider').onchange = () => showProviderFields($('#wcProvider').value);
+  $('#wcSave').onclick = () => {
+    const p = $('#wcProvider').value;
+    if (p === 'anthropic') state.weaveCfg.anthropic.apiKey = $('#wcAnthropicKey').value.trim();
+    else if (p === 'openai') state.weaveCfg.openai.apiKey = $('#wcOpenaiKey').value.trim();
+    else if (p === 'google') {
+      state.weaveCfg.google.projectId = $('#wcGoogleProject').value.trim();
+      state.weaveCfg.google.location = $('#wcGoogleLocation').value.trim();
+      state.weaveCfg.google.serviceAccountJson = $('#wcGoogleSA').value.trim();
+    }
+    state.weaveCfg.provider = p;
+    saveWeaveCfg();
+    toggleWeaveCfg(false);
+    refreshWeaveStatus();
+  };
 
   $('#composer').addEventListener('submit', sendComposed);
   const inp = $('#input');
@@ -773,14 +916,15 @@ function boot() {
 
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
-    if (!$('#timePop').hidden) toggleTimePop(false);
+    if (!$('#weaveCfgPop').hidden) toggleWeaveCfg(false);
+    else if (!$('#timePop').hidden) toggleTimePop(false);
     else if (state.weave) toggleWeave(false);
     else if (!$('#app').hidden) showHome();
   });
 
   autoGrow();
   paintTimePop();
-  health();
+  refreshWeaveStatus();
 
   // deep links: #wavesline drops into the app, #weave and #time also open a panel
   const h = location.hash;
