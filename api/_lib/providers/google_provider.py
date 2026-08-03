@@ -54,6 +54,16 @@ def _load_credentials(credentials: dict):
     return project, location, sa_creds.token
 
 
+def _endpoint(project: str, location: str, model: str) -> str:
+    # The "global" endpoint has no location prefix on the hostname — every
+    # other region does (e.g. "us-central1-aiplatform.googleapis.com").
+    host = "aiplatform.googleapis.com" if location == "global" else f"{location}-aiplatform.googleapis.com"
+    return (
+        f"https://{host}/v1/projects/{project}/locations/{location}"
+        f"/publishers/google/models/{model}:generateContent"
+    )
+
+
 def _post(url: str, token: str, payload: dict) -> dict:
     req = urllib.request.Request(
         url,
@@ -77,10 +87,7 @@ class GoogleProvider(Provider):
         # A trivial, cheap generateContent call — this exercises auth, the
         # project/region combo, and API enablement all at once, which a bare
         # OAuth token mint would not catch (e.g. Vertex AI API not enabled).
-        url = (
-            f"https://{location}-aiplatform.googleapis.com/v1/projects/{project}"
-            f"/locations/{location}/publishers/google/models/gemini-2.5-flash:generateContent"
-        )
+        url = _endpoint(project, location, "gemini-2.5-flash")
         _post(url, token, {
             "contents": [{"role": "user", "parts": [{"text": "ping"}]}],
             "generationConfig": {"maxOutputTokens": 1},
@@ -88,10 +95,7 @@ class GoogleProvider(Provider):
 
     def generate(self, task: str, model: str, credentials: dict) -> str:
         project, location, token = _load_credentials(credentials)
-        url = (
-            f"https://{location}-aiplatform.googleapis.com/v1/projects/{project}"
-            f"/locations/{location}/publishers/google/models/{model}:generateContent"
-        )
+        url = _endpoint(project, location, model)
         payload = {
             "contents": [{"role": "user", "parts": [{"text": task}]}],
             "systemInstruction": {"parts": [{"text": WORLD + "\n" + RULES}]},
