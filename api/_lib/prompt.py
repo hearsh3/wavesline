@@ -101,6 +101,18 @@ Return JSON only: {"messages":[{"from":"<id>","text":"..."}]}
 #  Prompt assembly
 # ══════════════════════════════════════════════════════════════
 
+def system_prompt(body: dict) -> str:
+    """The system instruction, with optional per-request overrides.
+
+    The Weave's prompt editor lets a user replace the world brief and the
+    writing rules from the browser; anything it doesn't send falls back to
+    the defaults above.
+    """
+    world = (body.get("world") or "").strip() or WORLD
+    rules = (body.get("rules") or "").strip() or RULES
+    return world + "\n" + rules
+
+
 def build_task(body: dict) -> str:
     thread = body.get("thread") or {}
     mode = body.get("mode", "reply")

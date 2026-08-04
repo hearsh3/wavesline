@@ -36,7 +36,7 @@ sys.path.insert(0, str(ROOT))
 
 from api._lib.models import PROVIDERS, model_table       # noqa: E402
 from api._lib.parse import clean, extract_json           # noqa: E402
-from api._lib.prompt import build_task                   # noqa: E402
+from api._lib.prompt import RULES, WORLD, build_task, system_prompt  # noqa: E402
 from api._lib.providers import ProviderError, get_provider  # noqa: E402
 
 
@@ -75,6 +75,11 @@ class Handler(SimpleHTTPRequestHandler):
     def _read_body(self) -> dict:
         n = int(self.headers.get("content-length") or 0)
         return json.loads(self.rfile.read(n) or b"{}")
+
+    def do_GET(self):
+        if self.path.split("?")[0] == "/api/prompt":
+            return self._json(200, {"world": WORLD, "rules": RULES})
+        return super().do_GET()
 
     def do_POST(self):
         path = self.path.split("?")[0]
@@ -135,7 +140,7 @@ class Handler(SimpleHTTPRequestHandler):
         t0 = time.time()
         try:
             provider = get_provider(provider_name)
-            raw = provider.generate(task, model, credentials)
+            raw = provider.generate(task, model, credentials, system_prompt(body))
             msgs = clean(extract_json(raw), valid)
         except ProviderError as exc:
             print(f"  ! {exc}", file=sys.stderr)

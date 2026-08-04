@@ -12,6 +12,6 @@ class Provider:
         """Cheap authenticated call. Raise ProviderError if the credentials don't work."""
         raise NotImplementedError
 
-    def generate(self, task: str, model: str, credentials: dict) -> str:
+    def generate(self, task: str, model: str, credentials: dict, system: str) -> str:
         """Return the model's raw text response. Raise ProviderError on failure."""
         raise NotImplementedError

@@ -398,6 +398,27 @@ button{cursor:pointer;background:none;border:0}
 .wv-log .er{color:#f9a8a8}
 .wv-log .ok{color:#8ee9a8}
 
+/* ── voices & prompt editor ───────────────────────────── */
+.sheet{position:absolute;inset:0;z-index:60;display:grid;place-items:center;padding:24px;
+  background:rgba(3,7,13,.72);backdrop-filter:blur(6px)}
+.sheet-card{display:flex;flex-direction:column;width:min(660px,100%);max-height:100%;
+  padding:16px 18px 15px;border-radius:16px;border:1px solid var(--line-2);
+  background:linear-gradient(180deg,rgba(12,24,42,.98),rgba(7,14,26,.98));
+  box-shadow:0 28px 70px rgba(0,0,0,.6),0 0 46px rgba(94,240,255,.10)}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sheet-head b{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--cy)}
+.sheet-card select{width:100%;padding:9px 11px;border-radius:10px;border:1px solid var(--line);
+  background:rgba(255,255,255,.04);outline:none;font-size:13px}
+.sheet-card select:focus{border-color:var(--line-2)}
+.sheet-card select option{background:#0b1626}
+#pmText{flex:1;min-height:220px;margin-top:10px;padding:12px 14px;border-radius:12px;resize:vertical;
+  border:1px solid var(--line);background:rgba(4,10,18,.6);outline:none;
+  font-family:var(--fm);font-size:12.5px;line-height:1.6;color:var(--ink)}
+#pmText:focus{border-color:var(--line-2)}
+.sheet-foot{display:flex;gap:8px;margin-top:12px}
+.sheet-foot .wv-b{flex:1}
+.pm-custom{color:var(--gold)}
+
 /* ══ responsive ══════════════════════════════════════════ */
 @media (max-width:1080px){
   .app-wl.weave-open{grid-template-columns:0 1fr 320px}

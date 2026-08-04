@@ -78,6 +78,30 @@ function hasCredentials() {
   return p === 'google' ? !!(c.projectId && c.location && c.serviceAccountJson) : !!c.apiKey;
 }
 
+/* Prompt overrides. Character notes and thread notes are edits to what data.js
+   already ships and are sent inside the thread payload; `world` and `rules`
+   replace the server's own system prompt when they're non-empty. Empty string
+   everywhere means "use the default". */
+const PROMPT_KEY = 'wl.promptCfg';
+function loadPromptCfg() {
+  const base = { world: '', rules: '', bios: {}, abouts: {} };
+  try {
+    const saved = JSON.parse(localStorage.getItem(PROMPT_KEY) || 'null');
+    if (saved && typeof saved === 'object') {
+      return Object.assign(base, saved, {
+        bios: Object.assign({}, saved.bios),
+        abouts: Object.assign({}, saved.abouts),
+      });
+    }
+  } catch { /* private mode or corrupt value */ }
+  return base;
+}
+function savePromptCfg() {
+  try { localStorage.setItem(PROMPT_KEY, JSON.stringify(state.promptCfg)); } catch { /* private mode */ }
+}
+const personBio  = id   => (state.promptCfg.bios[id] || '').trim() || person(id).b || '';
+const threadNote = meta => (state.promptCfg.abouts[meta.id] || '').trim() || meta.about || '';
+
 /* Terminal time. `skew` is how far ahead of the wall clock the world has been
    pushed; NOW() is the only clock anything else is allowed to read. Messages
    keep the absolute timestamp they were written at, so pushing the clock
@@ -88,6 +112,8 @@ const state = {
   open: null,
   weave: false,
   weaveCfg: loadWeaveCfg(),
+  promptCfg: loadPromptCfg(),
+  promptDefaults: null,   // {world, rules} fetched from api/prompt on first open
   backend: null,
   busy: false,
   doc: null,          // {name, text}
@@ -654,10 +680,10 @@ function threadPayload() {
     id: meta.id,
     kind: meta.kind,
     title: threadTitle(meta),
-    about: meta.about || '',
+    about: threadNote(meta),
     participants: ids.map(id => {
       const p = person(id);
-      return { id: p.id, name: p.n, nick: p.nick, bio: p.b || '' };
+      return { id: p.id, name: p.n, nick: p.nick, bio: personBio(id) };
     }),
     history: t.msgs.slice(-34).map(m => ({
       from: m.mine ? 'mei' : (m.from || 'system'),
@@ -686,6 +712,8 @@ async function generate(mode) {
     mode, model,
     provider: state.weaveCfg.provider,
     credentials: currentCredentials(),
+    world: state.promptCfg.world || '',
+    rules: state.promptCfg.rules || '',
     steer: $('#wvSteer').value.trim(),
     thread: threadPayload(),
     document: mode === 'document' ? state.doc : null,
@@ -823,6 +851,95 @@ function toggleWeaveCfg(on) {
   if (show) paintWeaveCfg();
 }
 
+/* ── voices & prompt editor ───────────────────────────────── */
+/* Every editable thing is addressed by a "target" string: the two globals
+   are bare keys, the rest carry the id they belong to. */
+function promptTargets() {
+  const out = [
+    { key: 'world', label: 'World brief (every chat)' },
+    { key: 'rules', label: 'Writing rules (every chat)' },
+  ];
+  const t = state.threads[state.open];
+  if (t) {
+    const meta = t.meta;
+    out.push({ key: 'about:' + meta.id, label: `Thread notes — ${threadTitle(meta)}` });
+    const ids = meta.kind === 'group' ? meta.members : [meta.with];
+    ids.forEach(id => out.push({ key: 'bio:' + id, label: `Voice — ${person(id).n}` }));
+  }
+  return out;
+}
+
+// what's saved as an override right now ('' when there is none)
+function promptOverride(key) {
+  const [kind, id] = key.split(':');
+  if (kind === 'world') return state.promptCfg.world || '';
+  if (kind === 'rules') return state.promptCfg.rules || '';
+  if (kind === 'bio')   return state.promptCfg.bios[id] || '';
+  return state.promptCfg.abouts[id] || '';
+}
+
+// what the app ships with, for the Reset button and the initial fill
+function promptDefault(key) {
+  const [kind, id] = key.split(':');
+  if (kind === 'world') return state.promptDefaults?.world || '';
+  if (kind === 'rules') return state.promptDefaults?.rules || '';
+  if (kind === 'bio')   return person(id).b || '';
+  return (THREADS.find(t => t.id === id) || {}).about || '';
+}
+
+function setPromptOverride(key, text) {
+  const [kind, id] = key.split(':');
+  const val = text.trim() === promptDefault(key).trim() ? '' : text;
+  if (kind === 'world') state.promptCfg.world = val;
+  else if (kind === 'rules') state.promptCfg.rules = val;
+  else if (kind === 'bio') state.promptCfg.bios[id] = val;
+  else state.promptCfg.abouts[id] = val;
+  savePromptCfg();
+}
+
+function paintPromptTarget() {
+  const key = $('#pmTarget').value;
+  const custom = !!promptOverride(key);
+  $('#pmText').value = promptOverride(key) || promptDefault(key);
+  const hint = $('#pmHint');
+  hint.textContent = custom ? 'customised — saved in this browser' : 'showing the default';
+  hint.className = 'wv-note' + (custom ? ' pm-custom' : '');
+}
+
+function paintPromptSheet() {
+  const sel = $('#pmTarget');
+  const keep = sel.value;
+  sel.innerHTML = '';
+  promptTargets().forEach(t => {
+    const o = document.createElement('option');
+    o.value = t.key;
+    o.textContent = t.label + (promptOverride(t.key) ? ' ·' : '');
+    sel.appendChild(o);
+  });
+  if (keep && [...sel.options].some(o => o.value === keep)) sel.value = keep;
+  paintPromptTarget();
+}
+
+async function togglePrompt(on) {
+  const sheet = $('#promptSheet');
+  const show = on ?? sheet.hidden;
+  sheet.hidden = !show;
+  if (!show) return;
+
+  // The world brief and rules live on the server; fetch them once so the
+  // editor can show the real text instead of an empty box.
+  if (!state.promptDefaults) {
+    try {
+      const r = await fetch('api/prompt');
+      state.promptDefaults = await r.json();
+    } catch {
+      state.promptDefaults = { world: '', rules: '' };
+      log('could not load the default prompt — the two global fields will start empty', 'er');
+    }
+  }
+  paintPromptSheet();
+}
+
 function retune() {
   buildHistories();
   state.open = null;
@@ -876,6 +993,24 @@ function boot() {
   $('#weaveCfgPop').onclick = e => e.stopPropagation();
   document.addEventListener('click', () => toggleWeaveCfg(false));
   $('#wcProvider').onchange = () => showProviderFields($('#wcProvider').value);
+
+  // voices & prompt
+  $('#openPrompt').onclick = e => { e.stopPropagation(); togglePrompt(true); };
+  $('#closePrompt').onclick = () => togglePrompt(false);
+  $('#promptSheet').onclick = e => { if (e.target.id === 'promptSheet') togglePrompt(false); };
+  $('#pmTarget').onchange = paintPromptTarget;
+  $('#pmReset').onclick = () => {
+    $('#pmText').value = promptDefault($('#pmTarget').value);
+    setPromptOverride($('#pmTarget').value, $('#pmText').value);
+    paintPromptSheet();
+    log('reset to default');
+  };
+  $('#pmSave').onclick = () => {
+    const key = $('#pmTarget').value;
+    setPromptOverride(key, $('#pmText').value);
+    paintPromptSheet();
+    log('saved · ' + ($('#pmTarget').selectedOptions[0].textContent || key).replace(' ·', ''), 'ok');
+  };
   $('#wcSave').onclick = () => {
     const p = $('#wcProvider').value;
     if (p === 'anthropic') state.weaveCfg.anthropic.apiKey = $('#wcAnthropicKey').value.trim();
@@ -917,7 +1052,8 @@ function boot() {
 
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
-    if (!$('#weaveCfgPop').hidden) toggleWeaveCfg(false);
+    if (!$('#promptSheet').hidden) togglePrompt(false);
+    else if (!$('#weaveCfgPop').hidden) toggleWeaveCfg(false);
     else if (!$('#timePop').hidden) toggleTimePop(false);
     else if (state.weave) toggleWeave(false);
     else if (!$('#app').hidden) showHome();

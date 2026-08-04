@@ -150,6 +150,7 @@
       <div class="wv-head">
         <b>⌁ Signal Weave</b>
         <div class="wv-head-btns">
+          <button class="icon-btn" id="openPrompt" title="Voices &amp; prompt">✎</button>
           <button class="icon-btn" id="openWeaveCfg" title="Provider settings">⚙</button>
           <button class="icon-btn" id="closeWeave" title="Close">×</button>
         </div>
@@ -217,6 +218,30 @@
       <div class="wv-log" id="wvLog"></div>
     </aside>
   </section>
+
+  <!-- voices & prompt editor -->
+  <div class="sheet" id="promptSheet" hidden>
+    <div class="sheet-card">
+      <div class="sheet-head">
+        <b>✎ Voices &amp; prompt</b>
+        <button class="icon-btn" id="closePrompt" title="Close">×</button>
+      </div>
+
+      <label class="wv-l">Editing</label>
+      <select id="pmTarget"></select>
+      <p class="wv-note" id="pmHint"></p>
+
+      <textarea id="pmText" spellcheck="false" placeholder="loading…"></textarea>
+
+      <div class="sheet-foot">
+        <button class="wv-b" id="pmReset" type="button">Reset to default</button>
+        <button class="wv-b primary" id="pmSave" type="button">Save</button>
+      </div>
+      <p class="wc-note">Saved in this browser only. Character notes and thread notes ride
+        along with each request; the world brief and writing rules replace the server
+        defaults once you edit them.</p>
+    </div>
+  </div>
 </div>
 
 <script src="data.js"></script>

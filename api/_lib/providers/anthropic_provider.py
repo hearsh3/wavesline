@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from ..models import ANTHROPIC_MODELS, FALLBACK_BETA, FALLBACK_MODEL
-from ..prompt import RULES, SCHEMA, WORLD
+from ..prompt import SCHEMA
 from .base import Provider, ProviderError
 
 
@@ -23,7 +23,7 @@ class AnthropicProvider(Provider):
         except Exception as exc:                        # noqa: BLE001
             raise ProviderError(str(exc)[:300]) from exc
 
-    def generate(self, task: str, model: str, credentials: dict) -> str:
+    def generate(self, task: str, model: str, credentials: dict, system: str) -> str:
         caps = ANTHROPIC_MODELS.get(model)
         if not caps:
             raise ProviderError(f"unknown Anthropic model {model!r}")
@@ -32,7 +32,7 @@ class AnthropicProvider(Provider):
         kwargs = {
             "model": model,
             "max_tokens": 8000,
-            "system": [{"type": "text", "text": WORLD + "\n" + RULES,
+            "system": [{"type": "text", "text": system,
                         "cache_control": {"type": "ephemeral"}}],
             "messages": [{"role": "user", "content": task}],
         }

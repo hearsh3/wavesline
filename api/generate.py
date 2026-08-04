@@ -8,7 +8,7 @@ from http.server import BaseHTTPRequestHandler
 
 from api._lib.models import PROVIDERS
 from api._lib.parse import clean, extract_json
-from api._lib.prompt import build_task
+from api._lib.prompt import build_task, system_prompt
 from api._lib.providers import ProviderError, get_provider
 
 
@@ -52,7 +52,7 @@ class handler(BaseHTTPRequestHandler):
         t0 = time.time()
         try:
             provider = get_provider(provider_name)
-            raw = provider.generate(task, model, credentials)
+            raw = provider.generate(task, model, credentials, system_prompt(body))
             msgs = clean(extract_json(raw), valid)
         except ProviderError as exc:
             return self._json(500, {"error": str(exc)})

@@ -20,7 +20,7 @@ import urllib.error
 import urllib.request
 
 from ..models import GOOGLE_DEFAULT
-from ..prompt import RULES, SCHEMA, WORLD
+from ..prompt import SCHEMA
 from .base import Provider, ProviderError
 
 TIMEOUT = 55  # seconds — stay under vercel.json's maxDuration for api/generate.py
@@ -94,12 +94,12 @@ class GoogleProvider(Provider):
             "generationConfig": {"maxOutputTokens": 1},
         })
 
-    def generate(self, task: str, model: str, credentials: dict) -> str:
+    def generate(self, task: str, model: str, credentials: dict, system: str) -> str:
         project, location, token = _load_credentials(credentials)
         url = _endpoint(project, location, model)
         payload = {
             "contents": [{"role": "user", "parts": [{"text": task}]}],
-            "systemInstruction": {"parts": [{"text": WORLD + "\n" + RULES}]},
+            "systemInstruction": {"parts": [{"text": system}]},
             "generationConfig": {
                 "responseMimeType": "application/json",
                 "responseSchema": SCHEMA,

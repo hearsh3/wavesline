@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from ..prompt import RULES, SCHEMA, WORLD
+from ..prompt import SCHEMA
 from .base import Provider, ProviderError
 
 
@@ -22,13 +22,13 @@ class OpenAIProvider(Provider):
         except Exception as exc:                        # noqa: BLE001
             raise ProviderError(str(exc)[:300]) from exc
 
-    def generate(self, task: str, model: str, credentials: dict) -> str:
+    def generate(self, task: str, model: str, credentials: dict, system: str) -> str:
         client = self._client(credentials)
         try:
             resp = client.chat.completions.create(
                 model=model,
                 messages=[
-                    {"role": "system", "content": WORLD + "\n" + RULES},
+                    {"role": "system", "content": system},
                     {"role": "user", "content": task},
                 ],
                 response_format={
