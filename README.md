@@ -3,8 +3,8 @@
 *Mei's Terminal, some months after the Stridergate. One app is installed.*
 
 An in-world messaging simulator for *Lyre, Speak to Me* — the group chat, the
-private threads, and a live line to Claude when you want the cast to say
-something new.
+private threads, and a live line to a model of your choosing when you want the
+cast to say something new.
 
 ## Running it
 
@@ -13,8 +13,8 @@ python3 server.py
 # → http://127.0.0.1:8791/
 ```
 
-That serves the app **and** the Signal Weave, which writes new messages with
-Claude. There's a `wavesline` entry in `.claude/launch.json` too.
+That serves the app **and** the Signal Weave, which writes new messages through
+whichever provider you configure in the panel. There's a `wavesline` entry in `.claude/launch.json` too.
 
 You can also just double-click `index.html` — the terminal, the whole chat bank,
 the composer and image attachments all work offline. Only live generation needs
@@ -144,56 +144,64 @@ who was actually on which bike.
 
 ### Register
 
-The prompt carries the world, every participant's bio, and the last 34 messages —
-plus a hard list of the failure modes this kind of thing drifts into. Banned
-outright: contrastive negation ("not X, but Y"), litotes ("not bad"),
-self-correction mid-message, defining anything by what it isn't, echoing the
-previous line back before replying, stage directions, and speeches about growth.
-Short messages. One thought each. The model may never write as Mei — she holds
-the Terminal.
+The prompt lives in `api/_lib/prompt.py` and is built along the lines of the
+Marinara Spaghetti group-roleplay preset. The model is framed as a **game master**
+running a continuous group roleplay: it plays everyone, the user plays Mei and
+only Mei. Four critical instructions carry the weight:
 
-The bios are load-bearing. A sharper bio produces a sharper voice.
+1. **Resistance play.** These are autonomous people with their own agendas, and
+   they must resist Mei when their beliefs clash with where she is pushing —
+   kindly or cruelly, whichever fits. Nobody exists to agree with her. *A thread
+   in which everyone validates Mei is a failed thread.*
+2. **Show, don't tell** — the object, the hour, the number. Nobody narrates their
+   own emotional state or explains their own character.
+3. **Character dialogue** — quick, back-and-forth, natural, with the relationships
+   between these people taken into account.
+4. **Guidelines** — SFW for mature audiences; the user sets the boundaries; dark
+   themes and profanity are fine, anyone can be harmed, explicit content cuts to
+   black.
 
-### Models
+On top of that sit the texting rules and the same hard prohibitions as before:
+no contrastive negation ("not X, but Y"), no litotes ("not bad"), no
+self-correction mid-message, no defining a thing by what it isn't, no echoing the
+previous line back, no stage directions, no speeches about growth.
 
-Pick from the panel; the list comes from the server, so it lives in one place
-(`MODELS` in `server.py`).
+**The burst size is rolled fresh on every request** — 1 to 6 messages for a
+conversational turn, so the cadence never settles into a recognisable rhythm.
+Sometimes one word from one person; sometimes six piling over each other. The two
+modes that stand in for elapsed time (catch-up, situation file) roll 4 to 11,
+since one message would defeat the feature.
+
+The bios in `data.js` are load-bearing, and are now written down from the
+SillyTavern character cards in the parent folder (`Iuno.json`, `Lupa.json`,
+`Cartethyia.json`, `Ciaccona.json`, `Chisa.json`, `Lynae.json`, `Aemeath.json`,
+`Mei1.json`, `Hiyuki.json`) — specimens rather than adjectives, which is what
+makes a voice hold. A sharper bio produces a sharper voice.
+
+The Weave's prompt editor can override the world brief and the rules per request
+from the browser; anything it doesn't send falls back to the defaults above.
+
+### Providers and models
+
+The Weave is multi-provider. Pick a provider and model from the panel's settings
+menu; credentials are supplied by you, stored in the browser, and sent per
+request. The table lives in one place — `PROVIDERS` in `api/_lib/models.py`:
 
 | | |
 |---|---|
-| **Opus 4.8** | sharpest voices — the default |
-| **Sonnet 5** | close to Opus, quick on batches |
-| **Fable 5** | most capable and priciest; thinks on every turn |
-| **Haiku 4.5** | cheapest — blunter and more literal |
+| **Anthropic (Claude)** | Opus 4.8 (default), Sonnet 5, Fable 5, Haiku 4.5 |
+| **Google (Vertex AI)** | Gemini 3.1 Pro, 3.5 Flash, 3.6 Flash |
+| **OpenAI** | GPT-5, GPT-5 mini |
 
-*(There is no "Opus 5" — Opus 4.8 is the current top of the Opus line, and
-Fable 5 is the most capable model in the 5 family. Both are in the picker.)*
+Each provider adapter lives in `api/_lib/providers/`. Prompt assembly is shared
+and provider-agnostic (`api/_lib/prompt.py`), so the register above is identical
+whichever model you point it at.
 
-These are not interchangeable at the API level, so the server carries a small
-capability table per model rather than passing the name through:
-
-- **Fable 5** thinks unconditionally and **rejects any explicit `thinking`
-  config**, so the parameter is omitted entirely. It also runs on the beta
-  endpoint with `fallbacks: [{model: "claude-opus-4-8"}]`, so a safety-classifier
-  decline gets re-served instead of returning nothing.
-- **Haiku 4.5** predates adaptive thinking and the effort parameter — it gets neither.
-- Opus 4.8 and Sonnet 5 get adaptive thinking, low effort, and the JSON schema.
-
-### Backends
-
-`server.py` picks whichever is available:
-
-1. **Anthropic SDK** — used when `ANTHROPIC_API_KEY` is set and `anthropic` is installed.
-2. **Claude Code CLI** — used otherwise, if `claude` is on `PATH`. Uses your
-   existing login, so there's no key to configure. This is the default here.
-
-If neither is present the panel reads `offline`, live generation is disabled, and
-everything else keeps working.
-
-```sh
-python3 server.py --port 8899
-python3 server.py --model claude-sonnet-5     # different default (still switchable in the UI)
-```
+Running locally, `server.py` mirrors the Vercel functions in `api/` — both import
+the same adapters, so behaviour can't drift between dev and production. If a local
+request omits credentials entirely it falls back to `ANTHROPIC_API_KEY` from the
+environment; the deployed functions don't, since credentials are meant to be
+user-supplied.
 
 ## Files
 

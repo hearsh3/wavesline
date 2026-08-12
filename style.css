@@ -153,14 +153,20 @@ button{cursor:pointer;background:none;border:0}
 .app-wl{display:grid;grid-template-columns:326px 1fr;min-height:0}
 .app-wl.weave-open{grid-template-columns:326px 1fr 330px}
 
+/* min-width:0 is load-bearing on all three. As grid items they default to
+   min-width:auto, which refuses to shrink below the pane's min-content width —
+   and the thread header carries a nowrap member list ("Mei · Iuno · Lupa · …")
+   that is ~600px wide in the group chat. Without this the pane overflows a
+   narrow viewport, Mei's right-aligned bubbles align to the overflowed box, and
+   the .terminal's overflow:hidden crops them. */
 .pane-list{
-  display:flex;flex-direction:column;min-height:0;
+  display:flex;flex-direction:column;min-height:0;min-width:0;
   background:linear-gradient(180deg,rgba(8,16,29,.86),rgba(6,12,22,.92));
   border-right:1px solid var(--line);backdrop-filter:blur(14px);
 }
-.pane-thread{display:flex;flex-direction:column;min-height:0;position:relative}
+.pane-thread{display:flex;flex-direction:column;min-height:0;min-width:0;position:relative}
 .pane-weave{
-  display:flex;flex-direction:column;min-height:0;gap:8px;padding:14px 16px 18px;overflow-y:auto;
+  display:flex;flex-direction:column;min-height:0;min-width:0;gap:8px;padding:14px 16px 18px;overflow-y:auto;
   background:linear-gradient(180deg,rgba(8,16,29,.9),rgba(6,12,22,.94));
   border-left:1px solid var(--line);backdrop-filter:blur(14px);
 }
@@ -324,7 +330,7 @@ button{cursor:pointer;background:none;border:0}
 .composer{display:flex;align-items:flex-end;gap:9px;padding:12px 18px 16px;
   border-top:1px solid var(--line);backdrop-filter:blur(10px);background:rgba(8,16,29,.5)}
 .composer .attach{cursor:pointer;font-size:15px}
-#input{flex:1;resize:none;max-height:132px;padding:10px 15px;border-radius:16px;border:1px solid var(--line);
+#input{flex:1;min-width:0;resize:none;max-height:132px;padding:10px 15px;border-radius:16px;border:1px solid var(--line);
   background:rgba(255,255,255,.04);outline:none;font-size:14.4px;line-height:1.4}
 #input:focus{border-color:var(--line-2);background:rgba(94,240,255,.06)}
 #input::placeholder{color:var(--dimmer)}
@@ -425,6 +431,11 @@ button{cursor:pointer;background:none;border:0}
   .app-wl.weave-open .pane-list{display:none}
 }
 @media (max-width:760px){
+  /* the three status-bar items sum to exactly the available width at 375px,
+     so the carrier label wraps to a second line and the bar grows 16px */
+  .statusbar{padding:9px 12px;gap:8px}
+  .sb-left{min-width:0;white-space:nowrap;overflow:hidden;letter-spacing:.10em}
+
   .app-wl,.app-wl.weave-open{grid-template-columns:1fr}
   .pane-thread{display:none}
   .pane-weave{position:absolute;inset:0;z-index:20;border:0}
