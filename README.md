@@ -217,7 +217,7 @@ request. The table lives in one place — `PROVIDERS` in `api/_lib/models.py`:
 | | |
 |---|---|
 | **Anthropic (Claude)** | Opus 4.8 (default), Sonnet 5, Fable 5, Haiku 4.5 |
-| **Google (Vertex AI)** | Gemini 3.1 Pro, 3.5 Flash, 3.6 Flash |
+| **Google (Vertex AI)** | Gemini 3.1 Pro, 3.5 Flash, 3.6 Flash, 3.7 Flash, 3.8 Flash |
 | **OpenAI** | GPT-5, GPT-5 mini |
 
 Each provider adapter lives in `api/_lib/providers/`. Prompt assembly is shared

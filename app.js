@@ -21,7 +21,9 @@ const PROVIDERS = {
     models: [
       { id: 'gemini-3.1-pro-preview', label: 'Gemini 3.1 Pro (preview)', note: 'flagship — best for nuanced dialogue' },
       { id: 'gemini-3.5-flash', label: 'Gemini 3.5 Flash', note: 'fast and cheap, blunter' },
-      { id: 'gemini-3.6-flash', label: 'Gemini 3.6 Flash', note: 'newest flash — quicker still' },
+      { id: 'gemini-3.6-flash', label: 'Gemini 3.6 Flash', note: 'quicker still' },
+      { id: 'gemini-3.7-flash', label: 'Gemini 3.7 Flash', note: 'fast flash' },
+      { id: 'gemini-3.8-flash', label: 'Gemini 3.8 Flash', note: 'newest flash' },
     ],
   },
   anthropic: {
