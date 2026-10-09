@@ -34,12 +34,25 @@ the last six days, and stitches them into a history. Unread counts, previews and
 the sidebar order fall out of whichever week you got. Hit **⟳ Retune** for
 another one without reloading.
 
-283 scenes and about 2,500 messages across 24 threads, so the same two
-conversations rarely surface together. The group chat holds 94 of them; the seven
-pack threads hold another 147 between them.
+**The bank is kept per era**, so the week you draw matches where the household
+actually is. The current era is **Xuanfang Hold**: the pack (Mei, Iuno, Lupa,
+Cartethyia, Ciaccona, Chisa, Amy) lodged in the storehouse by Wen's west kitchen
+in Huanglong, after the Muyu fighting and before the train to Mengzhou. Mei has a
+spar wound through her and is not allowed to lift anything; Nyx is parked outside
+under a tarp; Amy is mad at Ma for a hundred years; there will be a Tuesday and
+nobody says the word. Written off *Moon Waking*, *Returning Calls*, *The Long
+Line* and *Bad Wheel, Bad Wheel*.
 
-The bank is written off the side stories in the parent folder rather than
-invented from scratch, so the running jokes have provenance: Chisa has been
+239 Xuanfang scenes (about 1,430 messages) across 33 threads. The earlier Rabelle
+College bank — 283 scenes, 2,500 messages — is archived intact as
+`SCENES_LAHAIROI`. Set `const ERA` at the bottom of `chats.js` to `'lahairoi'` to
+go back to it. Threads in `ERA_NEUTRAL` (Cantarella, Carlotta, Phrolova, the
+demons, the Troupe) draw from both banks, since their old scenes hold up anywhere.
+
+The archive was written off the earlier side stories, so its running jokes have
+provenance too:
+
+Chisa has been
 moving Mei's mugs two inches from the counter edge for eleven months
 (`the_ninth_step.md`), Ciaccona's lute takes forty percent of the hallway and
 Cartethyia has walked into it nine times without mentioning her hip (same), Lupa
@@ -51,10 +64,16 @@ Lupa has carried a piece of the fighting pens in her shoulder since she was nine
 
 ## The threads
 
-**THE Bimbos go to skool** — the group chat, named over Iuno's strenuous
+**crew rotates 🪁** — the household chat at Xuanfang, named for the kite Shimei
+that goes up at noon with the crew rotating. Nine members: the pack plus Yangyang
+and Suisui. Abby posts in it anyway, in capitals, through Mei's Terminal.
+Invoices at the family rate, a dragon on Lupa's face, the bad wheel song, a cup at
+the gate place before the fifth bell.
+
+**THE Bimbos go to skool** — the original group chat, named over Iuno's strenuous
 objection. Eight members: Mei, Iuno, Lupa, Cartethyia, Ciaccona, Chisa, Lynae,
-Amy. Bowls get broken, noodles get stolen, the lift is out again, and every so
-often somebody says the quiet thing and everyone answers "heard".
+Amy. Seven of them are in Huanglong; Lynae is holding the fort in Lahai-Roi with
+Rebecca and a bag packed under her bed, and gets the news late and loud.
 
 Then the private lines:
 
@@ -63,13 +82,17 @@ Then the private lines:
 | **Iuno** | saved as *Super Mega Priestess Iuno Lady*, which she has declined to change. Two cups, one of them cold. |
 | **Amy** | nineteen, real, permanently hungry, keeping a tally of every time Mei showed up |
 | **Cartethyia · Lupa · Ciaccona · Chisa · Lynae** | the pack, one at a time |
+| **Yangyang · Suisui** | a Watcher with a feathered collar and a plate kept warm by the stove; her sister, the household's auditor, at war with the Ministry of War in writing |
+| **Abby** | the Echo who lives in Mei, column twelve, dictation accepted, shouting |
+| **Chixia · Baizhi · Jinhsi** | Jinzhou: fourteen stitches and a crutch named Yangyang, a ledger column "To be read in the room", the Magistrate |
+| **Hsin · Liangyu** | the Moon Fox who never lies ("Ask me in Mengzhou"), and the Warden on the north stretch whose Nainai calls on Amy's freight line |
 | **Cantarella · Carlotta · Phrolova** | Rinascita — camellias, information, an orchestra with a chair grievance |
 | **Mornye · Lucilla · Luuk · Hiyuki · Sigrika** | Rabelle College and the people who run it |
 | **Augusta · Agrat · Nuwa · Nivora** | an Ephor, two demons, and someone in a volunteer's vest |
 | **Roccia · Brant** | the Troupe of Fools, still owing money in four states |
 | **S.I.G.M.A. · Mengzhou Noodles** | the gate system and the noodle shop, both muted |
 
-Twenty-three portraits are cropped from the character art in the parent folder;
+Thirty-one portraits are cropped from the character art in the parent folder;
 everyone else gets a monogram in a hue derived from their name.
 
 ## Letting time pass
@@ -175,11 +198,15 @@ since one message would defeat the feature.
 The bios in `data.js` are load-bearing, and are now written down from the
 SillyTavern character cards in the parent folder (`Iuno.json`, `Lupa.json`,
 `Cartethyia.json`, `Ciaccona.json`, `Chisa.json`, `Lynae.json`, `Aemeath.json`,
-`Mei1.json`, `Hiyuki.json`) — specimens rather than adjectives, which is what
+`Mei1.json`, `Hiyuki.json`, and the rest of `Jsons/`) — specimens rather than adjectives, which is what
 makes a voice hold. A sharper bio produces a sharper voice.
 
 The Weave's prompt editor can override the world brief and the rules per request
 from the browser; anything it doesn't send falls back to the defaults above.
+**Overrides are sticky:** they live in `localStorage` (`wl.promptCfg`) and shadow
+whatever ships in `data.js` and `prompt.py`. If you edited a bio or the world brief
+in the browser before an update, the old text still wins — reset it in the
+editor, or clear `wl.promptCfg`, to pick up the new defaults.
 
 ### Providers and models
 
@@ -210,10 +237,10 @@ user-supplied.
 | `index.html` | the device, the home screen, the app shell |
 | `style.css` | everything visual |
 | `data.js` | `PEOPLE` (the roster and its bios) and `THREADS` (the sidebar) |
-| `chats.js` | `SCENES` — the whole chat bank |
+| `chats.js` | the chat bank, per era (`SCENES_LAHAIROI`, `SCENES_XUANFANG`), composed into `SCENES` by `ERA` |
 | `app.js` | week-builder, thread renderer, composer, weave client |
 | `server.py` | static host + `/api/generate` + `/api/health` |
-| `avatars/*.webp` | 23 portraits, 176×176, cropped from the parent folder's art |
+| `avatars/*.webp` | 31 portraits, 176×176, cropped from the parent folder's art |
 
 ## Adding to it
 
@@ -225,7 +252,8 @@ A new person is one entry in `PEOPLE`:
 ```
 
 `av` points at `avatars/<key>.webp`; leave it `null` for a monogram. Add a thread
-for them in `THREADS`, then scenes under that thread id in `SCENES`:
+for them in `THREADS`, then scenes under that thread id in the current era's
+bank (`Object.assign(SCENES_XUANFANG, { t_someone: [...] })`):
 
 ```js
 t_someone: [

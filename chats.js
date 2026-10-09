@@ -9,9 +9,19 @@
    {f:'iuno', t:'text'}        a message; f:'me' is Mei
    {f:'amy',  ph:'caption'}    a photo
    {sys:'text'}                a thread notice
+
+   ERAS. The bank is kept per era so the week you draw is
+   consistent with where the household actually is:
+     SCENES_LAHAIROI  — Rabelle College, the dormitory, the cabin.
+                        Archived intact.
+     SCENES_XUANFANG  — Huanglong: the storehouse at Xuanfang Hold,
+                        after the Muyu fighting, before Mengzhou.
+   Set ERA at the bottom of this file to switch. Threads listed in
+   ERA_NEUTRAL also draw from the archive, because their old
+   scenes hold up anywhere.
    ══════════════════════════════════════════════════════════════ */
 
-const SCENES = {
+const SCENES_LAHAIROI = {
 
 /* ══════════════════════════════════════════════════════════════
    THE Bimbos go to skool
@@ -3273,3 +3283,2266 @@ t_noodles: [
 ],
 
 };
+
+
+/* ══════════════════════════════════════════════════════════════
+   ERA: XUANFANG HOLD
+   The storehouse by Wen's west kitchen. Nyx parked outside.
+   Mei has a hole through her and is not allowed to lift things.
+   There will be a Tuesday. Nobody says the word.
+   ══════════════════════════════════════════════════════════════ */
+
+const SCENES_XUANFANG = {};
+
+/* ── crew rotates 🪁 — the household group ─────────────────── */
+Object.assign(SCENES_XUANFANG, { crew: [
+
+{k:'domestic', m:[
+  {f:'suisui', t:"Breakfast is on the long table. Wen has made the pancakes with more salt, on Liangyu's grandmother's instructions."},
+  {f:'lupa', t:"Good."},
+  {f:'amy', t:"wen is taking notes from a woman she has never met"},
+  {f:'suisui', t:"Wen is taking notes from a woman she intends to beat in the spring."},
+  {f:'cartethyia', t:"I want to be there for that"},
+  {f:'me', t:"coming down"},
+  {f:'iuno', t:"Slowly."},
+  {f:'me', t:"snail pace. promise"},
+]},
+
+{k:'domestic', m:[
+  {f:'iuno', t:"There is a five-metre war machine outside the storehouse door."},
+  {f:'amy', t:"nyx"},
+  {f:'iuno', t:"I am aware of her name."},
+  {f:'amy', t:"i said i was parking her outside the house. you said nothing. silence is consent auntie"},
+  {f:'iuno', t:"I was eating chilli. I could not feel my face."},
+  {f:'chisa', t:"The quartermaster has measured her. He is drafting something."},
+  {f:'suisui', t:"I will see the draft before he sends it."},
+  {f:'iuno', t:"Thank you."},
+  {f:'suisui', t:"Family rate."},
+]},
+
+{k:'domestic', m:[
+  {f:'suisui', t:"Itemised, for the household's records: four cabbages, one furrow (moonwheel-shaped, eleven metres), one gate post."},
+  {f:'suisui', t:"Also: bite marks, moonwheel rim, two."},
+  {f:'lupa', t:"One."},
+  {f:'suisui', t:"I counted two."},
+  {f:'lupa', t:"The second one was a grip."},
+  {f:'amy', t:"with your TEETH"},
+  {f:'lupa', t:"I was being flown."},
+  {f:'iuno', t:"Send it to me. I'll sign."},
+  {f:'me', t:"i can sign"},
+  {f:'iuno', t:"You were flying it."},
+]},
+
+{k:'chaos', m:[
+  {f:'cartethyia', t:"Knight's Journey, day six!!"},
+  {f:'ciaccona', t:"day six. two stalls. one awning. she paid triple for the awning..."},
+  {f:'cartethyia', t:"The awning was very old"},
+  {f:'ciaccona', t:"it is younger now"},
+  {f:'suisui', t:"How much is triple?"},
+  {f:'cartethyia', t:"…I didn't ask"},
+  {f:'suisui', t:"Cartethyia."},
+  {f:'cartethyia', t:"He looked SAD, Suisui"},
+  {f:'suisui', t:"Bring me the receipt. All of them. Tonight."},
+]},
+
+{k:'kite', m:[
+  {f:'amy', t:"noon. overlook. shimei goes up"},
+  {f:'yangyang', t:"You fly. I hold the spool."},
+  {f:'amy', t:"crew rotates. you flew yesterday"},
+  {f:'yangyang', t:"Then I hold the spool and you fly."},
+  {f:'amy', t:"that's what you said the first time"},
+  {f:'yangyang', t:"It was correct the first time."},
+  {f:'lupa', t:"I'll be on the stairs."},
+  {f:'chisa', t:"Lupa will be on the bottom stair."},
+  {f:'lupa', t:"The stairs."},
+]},
+
+{k:'kite', m:[
+  {f:'cartethyia', t:"Proposal: Shimei is promoted to Kite-Sergeant"},
+  {f:'ciaccona', t:"seconded"},
+  {f:'amy', t:"thirded"},
+  {f:'yangyang', t:"Sergeant Mo has filed an objection."},
+  {f:'cartethyia', t:"On WHAT grounds"},
+  {f:'yangyang', t:"Seniority. And the cricket."},
+  {f:'ciaccona', t:"the cricket outranks the kite?"},
+  {f:'yangyang', t:"The cricket has been at every muster for three years."},
+  {f:'cartethyia', t:"That's fair actually"},
+  {f:'cartethyia', t:"Kite-Corporal"},
+]},
+
+{k:'chaos', m:[
+  {f:'lupa', t:"Who hung a dragon over my bed."},
+  {f:'cartethyia', t:"It's decorative!"},
+  {f:'lupa', t:"It was on my face at the fourth bell."},
+  {f:'cartethyia', t:"The tail let go of the fourth hook. It was very gentle about it"},
+  {f:'lupa', t:"It was across my MOUTH."},
+  {f:'ciaccona', t:"she said hsin's name. twice. very clearly..."},
+  {f:'lupa', t:"Who else hangs things over people in the dark."},
+  {f:'chisa', t:"Carte."},
+  {f:'lupa', t:"Who ELSE."},
+]},
+
+{k:'domestic', m:[
+  {f:'chisa', t:"There is a fresh cup at the gate place again."},
+  {f:'amy', t:"who's doing that"},
+  {f:'chisa', t:"Somebody before the fifth bell. Light feet. Heavy cup."},
+  {f:'suisui', t:"Wen says it isn't her."},
+  {f:'iuno', t:"It isn't me."},
+  {f:'yangyang', t:"…"},
+  {f:'amy', t:"yangyang"},
+  {f:'yangyang', t:"The cup was cold. I warmed it."},
+  {f:'lupa', t:"Leave it there."},
+]},
+
+{k:'serious', m:[
+  {f:'me', t:"can somebody bring me the thing from the shelf"},
+  {f:'iuno', t:"Which thing."},
+  {f:'me', t:"the blue thing"},
+  {f:'suisui', t:"There are four blue things on that shelf."},
+  {f:'me', t:"the one up top where i'd have to bend"},
+  {f:'lupa', t:"Then you're not reaching it."},
+  {f:'me', t:"that's literally why i asked"},
+  {f:'amy', t:"she's growing. this is what growth looks like. a woman asking for the blue thing"},
+  {f:'iuno', t:"Coming."},
+]},
+
+{k:'domestic', m:[
+  {f:'ciaccona', t:"the hand is on holiday until thursday and i want it entered that i hate this"},
+  {f:'chisa', t:"Entered."},
+  {f:'ciaccona', t:"somebody else restrung the third. it sounds like a hat"},
+  {f:'cartethyia', t:"I restrung the third!"},
+  {f:'ciaccona', t:"…"},
+  {f:'ciaccona', t:"it sounds like a lovely hat, carty"},
+  {f:'amy', t:"laevatain said four days. she said the bard will throw a tantrum"},
+  {f:'ciaccona', t:"and she said it scans in common time. i have been writing them in seven-eight out of spite"},
+]},
+
+{k:'serious', m:[
+  {f:'lupa', t:"Mei."},
+  {f:'me', t:"yeah"},
+  {f:'lupa', t:"Bean grandmother says you lifted a basket at the Academy."},
+  {f:'me', t:"it was half full"},
+  {f:'lupa', t:"Six metres."},
+  {f:'me', t:"i was sitting down for most of it"},
+  {f:'iuno', t:"Most."},
+  {f:'me', t:"…i'll sit for the rest of it"},
+  {f:'lupa', t:"Rope's on."},
+]},
+
+{k:'chaos', m:[
+  {f:'amy', t:"qingyan has been hired"},
+  {f:'cartethyia', t:"HIRED?"},
+  {f:'amy', t:"the kitchen pays him in fritters to carry turnips. he negotiated"},
+  {f:'suisui', t:"What rate?"},
+  {f:'amy', t:"one fritter per four turnips and he delegates"},
+  {f:'suisui', t:"He'll run a Guild office by twelve."},
+  {f:'me', t:"he delegated six turnips to me and iuno on the date"},
+  {f:'iuno', t:"He did. We complied."},
+]},
+
+{k:'warmth', m:[
+  {f:'yangyang', t:"Plate under the cover by the stove. Whose."},
+  {f:'me', t:"yours"},
+  {f:'yangyang', t:"I ate at the wall."},
+  {f:'me', t:"it's still yours"},
+  {f:'suisui', t:"It's chilli noodles from the four-stool place. She ordered a second tin."},
+  {f:'yangyang', t:"…"},
+  {f:'yangyang', t:"Eating it."},
+  {f:'lupa', t:"Good."},
+]},
+
+{k:'domestic', m:[
+  {f:'cartethyia', t:"She's alive"},
+  {f:'chisa', t:"The camellia."},
+  {f:'cartethyia', t:"The new tip opened a little!"},
+  {f:'cartethyia', ph:"the terrarium on the storehouse sill, four brown leaves, one pale green tip unfurling"},
+  {f:'ciaccona', t:"that is the ninth time today"},
+  {f:'cartethyia', t:"It's TRUE nine times"},
+  {f:'iuno', t:"Send that to Porto-Veno."},
+  {f:'cartethyia', t:"I already did. Cantarella said “Water it less.”"},
+  {f:'amy', t:"that's love in fisalia"},
+]},
+
+{k:'tuesday', m:[
+  {f:'amy', t:"what's the plan for tuesday"},
+  {f:'ciaccona', t:"…"},
+  {f:'cartethyia', t:"…"},
+  {f:'chisa', t:"…"},
+  {f:'lupa', t:"…"},
+  {f:'amy', t:"the TRAIN. the mengzhou lane. tuesday is when the lane-master said"},
+  {f:'suisui', t:"The lane-master said Wednesday."},
+  {f:'amy', t:"oh"},
+  {f:'amy', t:"carry on then"},
+]},
+
+{k:'domestic', m:[
+  {f:'suisui', t:"The Ministry of War has replied."},
+  {f:'iuno', t:"In writing?"},
+  {f:'suisui', t:"In writing. Asking for my objections in writing."},
+  {f:'ciaccona', t:"a reply asking you to reply"},
+  {f:'suisui', t:"They want it in triplicate. I have bought a great deal of paper."},
+  {f:'yangyang', t:"Jie. It's my rank."},
+  {f:'suisui', t:"It's my sister's rank. That's a different filing."},
+  {f:'lupa', t:"Let her write."},
+]},
+
+{k:'chaos', m:[
+  {f:'abby', t:"ATTENTION HOUSEHOLD. I HAVE BEEN DESCRIBED AS LIVESTOCK ON A LANE MANIFEST"},
+  {f:'amy', t:"i put dependents. the lane office changed it"},
+  {f:'lupa', t:"Correctly."},
+  {f:'abby', t:"THE OVERSIZED DOG CONCURS WITH TYRANNY"},
+  {f:'suisui', t:"I'll have it amended to “resident, self-directed”."},
+  {f:'abby', t:"THE FAN WOMAN IS A JURIST"},
+  {f:'me', t:"he means thank you"},
+  {f:'abby', t:"I MEAN THANK YOU"},
+]},
+
+{k:'serious', m:[
+  {f:'chisa', t:"The Core changed pitch at the second bell. A quarter-tone. For four breaths."},
+  {f:'iuno', t:"Up or down?"},
+  {f:'chisa', t:"Down. Then back."},
+  {f:'lupa', t:"Anything up there?"},
+  {f:'chisa', t:"Rain. A kite lane. Somebody laughing on the walkway."},
+  {f:'yangyang', t:"I'll walk the northeast parapet at the change of watch."},
+  {f:'suisui', t:"With your ribs?"},
+  {f:'yangyang', t:"Walking. Listening. No lifting."},
+  {f:'chisa', t:"I'll come. I listen better standing still."},
+]},
+
+{k:'domestic', m:[
+  {f:'lupa', t:"Wen's pickles. The little green things."},
+  {f:'cartethyia', t:"Peppercorns"},
+  {f:'lupa', t:"I know they're peppercorns."},
+  {f:'lupa', t:"She's putting a jar aside for Bo."},
+  {f:'ciaccona', t:"you told wen about bo"},
+  {f:'lupa', t:"She asked where I eat on Thursdays."},
+  {f:'amy', t:"lupa has a cross-continental pickle network"},
+  {f:'lupa', t:"I have a jar."},
+]},
+
+{k:'warmth', m:[
+  {f:'yangyang', t:"Chixia says morning to everyone."},
+  {f:'amy', t:"morning chixia"},
+  {f:'cartethyia', t:"MORNING CHIXIA"},
+  {f:'lupa', t:"Morning."},
+  {f:'yangyang', t:"She says she heard Cartethyia from Jinzhou."},
+  {f:'cartethyia', t:"Through the TEXT?"},
+  {f:'yangyang', t:"She says the capitals carry."},
+]},
+
+{k:'chaos', m:[
+  {f:'ciaccona', t:"why is there a lacquered knight on the stove shelf"},
+  {f:'cartethyia', t:"It's me!"},
+  {f:'ciaccona', t:"why is there a lacquered BARD next to it"},
+  {f:'cartethyia', t:"It's you! I paid triple. They weren't for sale"},
+  {f:'ciaccona', t:"that one plays a chord like a crime"},
+  {f:'chisa', t:"Cia turned the peg. It plays honest now."},
+  {f:'ciaccona', t:"…fine. it's a good bard"},
+  {f:'cartethyia', t:"So they can stay??"},
+  {f:'ciaccona', t:"they can stay. away from the stove. they're lacquer, carty"},
+]},
+
+{k:'domestic', m:[
+  {f:'iuno', t:"Mei's dressing is changed at the third bell. Baizhi's instructions arrived. Six pages."},
+  {f:'me', t:"six pages for one hole"},
+  {f:'iuno', t:"Four pages for the hole. Two for you."},
+  {f:'amy', t:"what's on the two"},
+  {f:'iuno', t:"“Patient will claim she is fine. Patient is not a reliable instrument.”"},
+  {f:'chisa', t:"Good."},
+  {f:'me', t:"chisa"},
+  {f:'chisa', t:"She is correct."},
+]},
+
+{k:'warmth', m:[
+  {f:'suisui', t:"There is a lantern in the corridor tonight. Leave it lit."},
+  {f:'cartethyia', t:"Why"},
+  {f:'suisui', t:"Because I like seeing two doorways from one light."},
+  {f:'ciaccona', t:"that's a very good reason"},
+  {f:'suisui', t:"It's the only one I have."},
+]},
+
+{k:'chaos', m:[
+  {f:'amy', t:"somebody is singing the bad wheel song on the walkway"},
+  {f:'amy', t:"STRANGERS are singing it"},
+  {f:'ciaccona', t:"eleven children followed you home. it was always going to get out..."},
+  {f:'amy', t:"there was no song"},
+  {f:'ciaccona', t:"there's always a song"},
+  {f:'cartethyia', t:"I've been doing the low part"},
+  {f:'ciaccona', t:"an octave down and cheerfully wrong, she's very committed"},
+  {f:'amy', t:"i hate all of you"},
+  {f:'me', t:"almost home, almost home"},
+  {f:'amy', t:"MA"},
+]},
+
+{k:'domestic', m:[
+  {f:'chisa', t:"Lupa's tail is on my feet. I can't get up."},
+  {f:'lupa', t:"It's cold."},
+  {f:'chisa', t:"It's for heat distribution."},
+  {f:'lupa', t:"…Yes."},
+  {f:'amy', t:"she's quoting you back at you"},
+  {f:'lupa', t:"She can stay there then."},
+  {f:'chisa', t:"Good."},
+]},
+
+{k:'serious', m:[
+  {f:'yangyang', t:"Departure for Mengzhou is confirmed for the day after the lane opens. Wednesday, if the lane-master holds."},
+  {f:'lupa', t:"Who's fit."},
+  {f:'yangyang', t:"Me: ribs, walking. Mei: Baizhi has to clear her. Cia: hand."},
+  {f:'ciaccona', t:"the hand can ride a train"},
+  {f:'iuno', t:"Mei rides in a seat with a back, at the window, beside me."},
+  {f:'me', t:"i can do window"},
+  {f:'suisui', t:"I've reserved the compartment. Itemised. Family rate."},
+  {f:'amy', t:"nyx is walking"},
+  {f:'iuno', t:"Then I'm walking beside her."},
+]},
+
+{k:'warmth', m:[
+  {f:'cartethyia', t:"Uncle Cosimo says he is making fifteen"},
+  {f:'ciaccona', t:"we're nine"},
+  {f:'cartethyia', t:"He says mountains develop appetites"},
+  {f:'cartethyia', t:"And Rosa doubled the lemon cakes again"},
+  {f:'amy', t:"egla is going to need a bigger table"},
+  {f:'suisui', t:"Augusta's seats nine. She said bring another chair."},
+  {f:'lupa', t:"Bring two."},
+]},
+
+{k:'chaos', m:[
+  {f:'amy', t:"OK who drew a moustache on the kite"},
+  {f:'yangyang', t:"It's a spar repair."},
+  {f:'amy', t:"it's a MOUSTACHE"},
+  {f:'yangyang', t:"It's a spar repair in the shape of a moustache."},
+  {f:'cartethyia', t:"I helped"},
+  {f:'amy', t:"carte"},
+  {f:'cartethyia', t:"She held the spar and I held the brush and it went curly"},
+  {f:'yangyang', t:"It flies true."},
+  {f:'amy', t:"…it does fly true"},
+]},
+
+{k:'domestic', m:[
+  {f:'suisui', t:"Laundry. Whose are the socks with the moons on?"},
+  {f:'amy', t:"mine"},
+  {f:'suisui', t:"There are seven. There were eight."},
+  {f:'abby', t:"I HAVE NOTHING TO DECLARE"},
+  {f:'me', t:"abby"},
+  {f:'abby', t:"IT WAS COLD IN HERE"},
+  {f:'amy', t:"you're INSIDE my MOTHER"},
+  {f:'abby', t:"SHE IS DRAFTY"},
+]},
+
+{k:'serious', m:[
+  {f:'amy', t:"saying it out loud. loud night. dark-room kind"},
+  {f:'lupa', t:"Heard."},
+  {f:'chisa', t:"Heard."},
+  {f:'yangyang', t:"Heard."},
+  {f:'suisui', t:"Heard. The kettle's on. Wen left the kitchen door unlatched for us."},
+  {f:'iuno', t:"Heard. Come to the stove."},
+  {f:'amy', t:"…coming"},
+  {f:'me', t:"i'll make the bad hot chocolate"},
+  {f:'amy', t:"the bad way"},
+  {f:'me', t:"exactly the bad way"},
+]},
+
+{k:'chaos', m:[
+  {f:'ciaccona', t:"chronicle entry for today: “the priestess was hazed with chilli by her own daughter-adjacent and drank tea on top of it for honour”"},
+  {f:'iuno', t:"I object to “daughter-adjacent.”"},
+  {f:'amy', t:"i object to all of it"},
+  {f:'ciaccona', t:"noted. star in the margin"},
+  {f:'iuno', t:"Amend it to “the priestess was correct about the pores.”"},
+  {f:'ciaccona', t:"…that's going in too"},
+]},
+
+{k:'domestic', m:[
+  {f:'lupa', t:"Wall's done. Liangyu's on the north stretch."},
+  {f:'yangyang', t:"Did she eat."},
+  {f:'lupa', t:"She had a fritter in front of me."},
+  {f:'yangyang', t:"Whole?"},
+  {f:'lupa', t:"Every crumb."},
+  {f:'suisui', t:"Good. I'll send another at the change of watch."},
+]},
+
+{k:'warmth', m:[
+  {f:'chisa', t:"My mother asked how many of us there are now."},
+  {f:'cartethyia', t:"What did you say"},
+  {f:'chisa', t:"I said nine and a resident."},
+  {f:'chisa', t:"She said “Your road adds seats.”"},
+  {f:'suisui', t:"She's welcome to an invoice."},
+  {f:'chisa', t:"She said crowded people still need lunch."},
+  {f:'lupa', t:"She's right."},
+]},
+
+{k:'chaos', m:[
+  {f:'cartethyia', t:"A small blue bird just took a haw out of my HAND"},
+  {f:'suisui', t:"Round? Stiff in one wing?"},
+  {f:'cartethyia', t:"YES"},
+  {f:'suisui', t:"That's Dumpling."},
+  {f:'ciaccona', t:"or it's a sentinel"},
+  {f:'suisui', t:"It's Dumpling. I named it. It answers to it."},
+  {f:'chisa', t:"It answers to anything holding a haw."},
+]},
+
+{k:'serious', m:[
+  {f:'iuno', t:"Hsin has not been seen since the night of the Snare."},
+  {f:'lupa', t:"Haws keep going off Lao Da's shoulder."},
+  {f:'iuno', t:"That is not a sighting."},
+  {f:'suisui', t:"She lost a wager. She's sulking somewhere with a view."},
+  {f:'chisa', t:"The Core still sounds like her."},
+  {f:'iuno', t:"Then she's home."},
+]},
+
+{k:'domestic', m:[
+  {f:'amy', t:"nyx needs a tarp"},
+  {f:'iuno', t:"Nyx is five metres tall."},
+  {f:'amy', t:"so she needs a five metre tarp"},
+  {f:'suisui', t:"The lane office has sail-canvas. Off-cuts. I'll ask."},
+  {f:'amy', t:"she's getting frost in her wing joints"},
+  {f:'cartethyia', t:"I can hold it up while you tie it!"},
+  {f:'lupa', t:"From the ground."},
+  {f:'cartethyia', t:"I'll be fifteen metres, Lupa, I'll BE the ground"},
+]},
+
+{k:'warmth', m:[
+  {f:'yangyang', t:"Baizhi sent the Xuanling recordings."},
+  {f:'amy', t:"can we hear"},
+  {f:'yangyang', t:"Overlook. After supper. The fourth one has two birds."},
+  {f:'ciaccona', t:"i'll bring the lute and not play it"},
+  {f:'chisa', t:"I want to hear the second one come in."},
+  {f:'yangyang', t:"It comes in late."},
+  {f:'chisa', t:"I know. You said."},
+]},
+
+{k:'chaos', m:[
+  {f:'me', t:"the four stool noodle place has a sign up now"},
+  {f:'me', ph:"a handwritten board on a steamy stall front: NO REFUNDS FOR CRYING"},
+  {f:'iuno', t:"That's about us."},
+  {f:'me', t:"that's about me"},
+  {f:'iuno', t:"I couldn't feel my face for an hour. That's about us."},
+  {f:'lupa', t:"Take me."},
+  {f:'me', t:"you'll make them put up a second sign"},
+]},
+
+{k:'domestic', m:[
+  {f:'suisui', t:"Yangyang ate the large osmanthus cake first again."},
+  {f:'yangyang', t:"It was on top."},
+  {f:'suisui', t:"It has been on top for twenty years."},
+  {f:'yangyang', t:"Then it's tradition."},
+  {f:'amy', t:"she is RIGHT though"},
+  {f:'suisui', t:"Nobody asked the auditor."},
+]},
+
+]});
+
+/* ── THE Bimbos go to skool — Huanglong edition ─────────────── */
+Object.assign(SCENES_XUANFANG, { bimbos: [
+
+{k:'lynae', m:[
+  {f:'lynae', t:"status report pls"},
+  {f:'lynae', t:"rebecca says the dorm is too quiet and she's started talking to the kettle"},
+  {f:'amy', t:"ma got stabbed by a mountain"},
+  {f:'lynae', t:"WHAT"},
+  {f:'me', t:"a spar. it's healing"},
+  {f:'chisa', t:"Through the abdomen. Front to back. Clean."},
+  {f:'lynae', t:"chisa why does “clean” make it worse"},
+  {f:'chisa', t:"It is the good kind."},
+]},
+
+{k:'lynae', m:[
+  {f:'lynae', ph:"a canvas bag zipped shut under a dorm bed, a pair of trainers lined up beside it"},
+  {f:'lynae', t:"still packed btw"},
+  {f:'cartethyia', t:"LYNAE"},
+  {f:'lupa', t:"Unpack the socks. They'll go stale."},
+  {f:'lynae', t:"the socks stay in the bag lupa that's the whole point of the bag"},
+  {f:'me', t:"we'll ring the bikes at the gate so you hear"},
+  {f:'lynae', t:"you better"},
+]},
+
+{k:'chaos', m:[
+  {f:'ciaccona', t:"for the archive. the knight, the wolf, the bard and the reporter were stranded on a karst pinnacle four hundred feet above the clouds"},
+  {f:'lynae', t:"as you do"},
+  {f:'ciaccona', t:"we sent a distress call. acoustic. off key"},
+  {f:'lupa', t:"Carte sang it."},
+  {f:'cartethyia', t:"Lupa HOWLED it"},
+  {f:'ciaccona', t:"and the rescue arrived eleven minutes late and flown by mei and amy"},
+  {f:'lynae', t:"lmaooo the moonwheel?? iuno's moonwheel??"},
+  {f:'iuno', t:"Mine."},
+  {f:'lynae', t:"rip"},
+]},
+
+{k:'chaos', m:[
+  {f:'amy', t:"i have my terminal back"},
+  {f:'lynae', t:"back from WHAT"},
+  {f:'amy', t:"auntie confiscated it"},
+  {f:'iuno', t:"For ignoring three distress calls while joyriding my moonwheel with a woman who has a hole in her."},
+  {f:'amy', t:"two distress calls. the third one was carte singing"},
+  {f:'cartethyia', t:"It was a distress SONG"},
+  {f:'lynae', t:"amy got grounded in a different country. growth"},
+]},
+
+{k:'domestic', m:[
+  {f:'lynae', t:"rebecca wants to know if huanglong has trees"},
+  {f:'chisa', t:"Many."},
+  {f:'lynae', t:"she says tell them she's sorry"},
+  {f:'amy', t:"sorry FOR the trees or sorry they have to live near the trees"},
+  {f:'lynae', t:"she won't elaborate. she ate noodles out of the carton and called it breakfast and went to class"},
+  {f:'lupa', t:"Good girl."},
+]},
+
+{k:'warmth', m:[
+  {f:'lynae', t:"goodnight bimbos"},
+  {f:'iuno', t:"Goodnight, Naeun."},
+  {f:'lynae', t:"…"},
+  {f:'lynae', t:"ok that one hit"},
+  {f:'cartethyia', t:"Goodnight Naeun!!"},
+  {f:'ciaccona', t:"goodnight naeun"},
+  {f:'lynae', t:"STOP i'm in bed"},
+  {f:'chisa', t:"Goodnight, Naeun."},
+  {f:'lynae', t:"🫠"},
+]},
+
+{k:'chaos', m:[
+  {f:'cartethyia', t:"Lynae what are the noodles saying"},
+  {f:'lynae', t:"they put a little sad face on the household's laminated order"},
+  {f:'lynae', ph:"a laminated menu card taped to a shop wall, a small hand-drawn sad face next to 'THE USUAL x9'"},
+  {f:'amy', t:"x9 when we left. it's x10 now"},
+  {f:'lynae', t:"who's 10"},
+  {f:'amy', t:"yangyang. and suisui. and abby eats four. x13"},
+  {f:'lynae', t:"the noodle man is going to cry with joy"},
+]},
+
+{k:'serious', m:[
+  {f:'lynae', t:"real question. is everyone ok"},
+  {f:'chisa', t:"Mei: healing. Cia: hand on holiday. Yangyang: ribs. Iuno: tired. Lupa: fine."},
+  {f:'lupa', t:"Accurate."},
+  {f:'chisa', t:"Lupa's tail has been very still since the moonwheel."},
+  {f:'lupa', t:"Chisa."},
+  {f:'lynae', t:"ok so lupa's a wreck. got it. i'll send onigiri"},
+  {f:'amy', t:"they'll arrive as rice dust"},
+  {f:'lynae', t:"then you'll eat rice dust and like it"},
+]},
+
+{k:'domestic', m:[
+  {f:'ciaccona', t:"we are living above a kitchen. there's a long table. the cook's name is wen and she is terrifying"},
+  {f:'lynae', t:"terrifying how"},
+  {f:'lupa', t:"She gave me the extra bowl without me asking."},
+  {f:'lynae', t:"oh she's in love with you"},
+  {f:'lupa', t:"She's a professional."},
+  {f:'amy', t:"she put pickled peppercorns in a jar for bo. lupa told her about BO"},
+]},
+
+{k:'tuesday', m:[
+  {f:'lynae', t:"anything big happening this week"},
+  {f:'cartethyia', t:"NO"},
+  {f:'ciaccona', t:"train on wednesday"},
+  {f:'chisa', t:"A train."},
+  {f:'lupa', t:"Wednesday."},
+  {f:'lynae', t:"why did carte say no in capitals"},
+  {f:'cartethyia', t:"Capitals are how I say things!"},
+  {f:'lynae', t:"…ok"},
+  {f:'lynae', t:"dm me"},
+]},
+
+{k:'warmth', m:[
+  {f:'me', ph:"two blue crystal drop earrings, one in Mei's ear and one in Iuno's, cheeks pressed together, a hawthorn skewer between them"},
+  {f:'lynae', t:"MATCHING????"},
+  {f:'ciaccona', t:"they came down to breakfast in them. no comment. ate porridge"},
+  {f:'amy', t:"i had to look at that with my own eyes at seven in the morning"},
+  {f:'lynae', t:"iuno you're so whipped"},
+  {f:'iuno', t:"Yes."},
+  {f:'lynae', t:"she just said yes 😭"},
+]},
+
+{k:'chaos', m:[
+  {f:'lynae', t:"sigma sent me a notice saying the household has been absent for 23 days"},
+  {f:'lynae', t:"it's addressed to all of you. cc'd me"},
+  {f:'amy', t:"tell sigma we're on a field trip"},
+  {f:'lynae', t:"it says “field trips require form 6-C”"},
+  {f:'iuno', t:"Mornye signed one."},
+  {f:'lynae', t:"it says the form 6-C listed “a short walk”"},
+  {f:'ciaccona', t:"it was a long walk"},
+]},
+
+{k:'domestic', m:[
+  {f:'amy', t:"lynae there's a five metre robot parked outside our house and auntie hates it"},
+  {f:'iuno', t:"I respect it."},
+  {f:'amy', t:"you called her “an obstruction”"},
+  {f:'iuno', t:"A respected obstruction."},
+  {f:'lynae', t:"can i tag her"},
+  {f:'amy', t:"NO"},
+  {f:'lynae', t:"just a little star"},
+  {f:'amy', t:"…a small star. on the left knee"},
+]},
+
+{k:'serious', m:[
+  {f:'amy', t:"lynae i'm mad at ma"},
+  {f:'lynae', t:"for how long"},
+  {f:'amy', t:"a hundred years"},
+  {f:'me', t:"i'm in this chat"},
+  {f:'amy', t:"i know. that's on purpose"},
+  {f:'lynae', t:"ok. what did she do"},
+  {f:'amy', t:"got a spar through her and smiled about it"},
+  {f:'lynae', t:"yeah that's a hundred years"},
+]},
+
+{k:'chaos', m:[
+  {f:'cartethyia', t:"Lynae there are FOXES here"},
+  {f:'lynae', t:"cute?"},
+  {f:'lupa', t:"No."},
+  {f:'cartethyia', t:"Yes!"},
+  {f:'chisa', t:"One is four hundred years old and owns the mountain."},
+  {f:'lynae', t:"is she single"},
+  {f:'iuno', t:"Naeun."},
+  {f:'lynae', t:"asking for rebecca"},
+]},
+
+{k:'domestic', m:[
+  {f:'lynae', t:"what's the food like"},
+  {f:'me', t:"chilli noodles at a four stool place. iuno cried"},
+  {f:'iuno', t:"My face cried. I was fine."},
+  {f:'chisa', t:"She drank tea after. It made it worse."},
+  {f:'iuno', t:"The tea was for honour."},
+  {f:'lynae', t:"you drank hot tea on top of chilli for HONOUR"},
+  {f:'iuno', t:"Mei's daughter-adjacent dared me."},
+  {f:'amy', t:"it was a dare and you lost"},
+]},
+
+{k:'warmth', m:[
+  {f:'lynae', t:"route home again?"},
+  {f:'lupa', t:"Mengzhou. Then Jinzhou. Then you."},
+  {f:'lynae', t:"how long"},
+  {f:'chisa', t:"Weeks. Few."},
+  {f:'lynae', t:"ok"},
+  {f:'lynae', t:"rebecca made a calendar and she's crossing days off with a red pen"},
+  {f:'cartethyia', t:"Tell her she's doing great"},
+  {f:'lynae', t:"she says she knows"},
+]},
+
+{k:'chaos', m:[
+  {f:'ciaccona', t:"lynae i need your help. carte bought two lacquered puppets of us"},
+  {f:'lynae', t:"pics"},
+  {f:'ciaccona', ph:"two tiny lacquered figures on a shelf: a knight with a chipped plume and a bard holding a lute the size of a fingernail"},
+  {f:'lynae', t:"cia your puppet has your exact face"},
+  {f:'ciaccona', t:"that's the problem"},
+  {f:'lynae', t:"the face of a woman about to say something devastating about a chord"},
+  {f:'cartethyia', t:"I paid TRIPLE for that face"},
+]},
+
+{k:'domestic', m:[
+  {f:'lynae', t:"mornye asked me where you are on a map"},
+  {f:'iuno', t:"Send her the coordinates. She'll do the rest."},
+  {f:'lynae', t:"she already did the rest. she sent me the travel time by four different methods"},
+  {f:'lynae', t:"one of them is “by moonwheel, if somebody else is driving”"},
+  {f:'me', t:"amy can drive"},
+  {f:'iuno', t:"Amy can NOT."},
+]},
+
+{k:'serious', m:[
+  {f:'lynae', t:"i miss you guys"},
+  {f:'cartethyia', t:"We miss you every day!!"},
+  {f:'lupa', t:"There's a chair at the long table nobody sits in."},
+  {f:'lynae', t:"lupa"},
+  {f:'lupa', t:"Eat something."},
+  {f:'lynae', t:"…ok i'm eating something"},
+]},
+
+{k:'chaos', m:[
+  {f:'amy', t:"we have a new member"},
+  {f:'lynae', t:"of the bimbos??"},
+  {f:'amy', t:"of the house. yangyang. she's a watcher now. she has a FEATHER COLLAR"},
+  {f:'lynae', t:"like a fashion choice"},
+  {f:'chisa', t:"It is alive. It lifts when she feels something."},
+  {f:'lynae', t:"oh no she can't hide anything"},
+  {f:'ciaccona', t:"it went straight up when mei said “save you a plate”"},
+  {f:'me', t:"cia"},
+]},
+
+{k:'domestic', m:[
+  {f:'lynae', t:"did someone leave a dragon on my bunk before you left"},
+  {f:'cartethyia', t:"That's a different dragon"},
+  {f:'lupa', t:"How many dragons are there, Cartethyia."},
+  {f:'cartethyia', t:"Only a few!"},
+  {f:'lynae', t:"this one has a note that says “for naeun, so you're never alone in the dark”"},
+  {f:'lynae', t:"ok i'm keeping it"},
+]},
+
+]});
+
+/* ── pack DMs ───────────────────────────────────────────────── */
+Object.assign(SCENES_XUANFANG, { t_iuno: [
+
+{k:'date', m:[
+  {f:'iuno', t:"Upper market. Hawthorn. Second stall past the dyer's."},
+  {f:'me', t:"you scouted it"},
+  {f:'iuno', t:"I interrogated the man for a quarter of an hour. He soaks the skewers in plum wine."},
+  {f:'me', t:"iuiu"},
+  {f:'iuno', t:"Downhill the whole way. You sit twice whether you want to or not."},
+  {f:'me', t:"can i sit three times"},
+  {f:'iuno', t:"You may sit as often as you like."},
+]},
+
+{k:'date', m:[
+  {f:'me', t:"the bean grandmother said i shell like a soldier"},
+  {f:'iuno', t:"She told me I shell like a priestess."},
+  {f:'me', t:"is that bad"},
+  {f:'iuno', t:"She said it while taking my basket away."},
+  {f:'me', t:"so bad"},
+  {f:'iuno', t:"She gave it back with fewer beans in. I think that was mercy."},
+]},
+
+{k:'care', m:[
+  {f:'iuno', t:"Third bell. Dressing."},
+  {f:'me', t:"i'm on the overlook"},
+  {f:'iuno', t:"Then I'm coming to the overlook with the bag."},
+  {f:'me', t:"can we do it here? the light's nice"},
+  {f:'iuno', t:"Wind?"},
+  {f:'me', t:"barely. yangyang's flying shimei, she says it's soft today"},
+  {f:'iuno', t:"Ten minutes. Bench, please. Keep off the wall."},
+  {f:'me', t:"ok"},
+]},
+
+{k:'tuesday', m:[
+  {f:'me', t:"what are you doing tuesday"},
+  {f:'iuno', t:"Mei."},
+  {f:'me', t:"just asking"},
+  {f:'iuno', t:"You're smiling at your Terminal. I can see you from the stove."},
+  {f:'me', t:"i'm smiling at a different thing"},
+  {f:'iuno', t:"There are no other things in that kitchen."},
+  {f:'me', t:"there's you"},
+  {f:'iuno', t:"…Drink your tea."},
+]},
+
+{k:'tuesday', m:[
+  {f:'iuno', t:"I would like to be surprised. For once. I've never been."},
+  {f:'me', t:"ok"},
+  {f:'iuno', t:"That means you look away when I check my coat pocket."},
+  {f:'me', t:"i always look away"},
+  {f:'iuno', t:"You look at the ceiling, very obviously."},
+  {f:'me', t:"i'll look at the floor"},
+  {f:'iuno', t:"Thank you."},
+]},
+
+{k:'moonwheel', m:[
+  {f:'iuno', t:"Eleven minutes."},
+  {f:'me', t:"we came back"},
+  {f:'iuno', t:"Eleven minutes, with four of our friends on a pinnacle, flying my moonwheel through a woman who has a hole in her."},
+  {f:'me', t:"amy was steering"},
+  {f:'iuno', t:"Amy was channelling. You were steering. I could hear the difference from the courtyard."},
+  {f:'me', t:"…sorry"},
+  {f:'iuno', t:"Come here. I want to check the stitches with my hand."},
+]},
+
+{k:'care', m:[
+  {f:'me', t:"i'm so tired"},
+  {f:'iuno', t:"Where are you?"},
+  {f:'me', t:"long table. i sat down and now i live here"},
+  {f:'iuno', t:"Stay. I'll bring the blanket and Suisui's slippers."},
+  {f:'me', t:"suisui's going to invoice me for the slippers"},
+  {f:'iuno', t:"Family rate."},
+]},
+
+{k:'yangyang', m:[
+  {f:'me', t:"yangyang told me something tonight. on the promenade"},
+  {f:'iuno', t:"Do you want to tell me, or do you want me to know you carry it?"},
+  {f:'me', t:"the second one"},
+  {f:'iuno', t:"Then I know."},
+  {f:'me', t:"i promised her a canal walk. in jinzhou. holding hands"},
+  {f:'iuno', t:"Good. She should have one."},
+  {f:'me', t:"and the kisses stay ours"},
+  {f:'iuno', t:"They were always going to."},
+]},
+
+{k:'hp', m:[
+  {f:'iuno', t:"The High Priestess wants it noted that she could have taken the chilli."},
+  {f:'me', t:"she cried"},
+  {f:'iuno', t:"MY face cried. She was unbothered."},
+  {f:'me', t:"tell her the four stool place has a sign now"},
+  {f:'iuno', t:"She's seen it. She wants it framed."},
+]},
+
+{k:'domestic', m:[
+  {f:'iuno', t:"Amy called me Auntie at breakfast in front of Liangyu."},
+  {f:'me', t:"she calls you auntie every day"},
+  {f:'iuno', t:"She called me Auntie Iuiu."},
+  {f:'me', t:"oh"},
+  {f:'iuno', t:"I don't know what I'm supposed to do with that."},
+  {f:'me', t:"keep it"},
+  {f:'iuno', t:"I already put it in the coat pocket."},
+]},
+
+{k:'care', m:[
+  {f:'iuno', t:"The stump is warm today."},
+  {f:'me', t:"good warm?"},
+  {f:'iuno', t:"Like a hand on a scar. Somebody's."},
+  {f:'me', t:"mine?"},
+  {f:'iuno', t:"You're upstairs."},
+  {f:'me', t:"i'm thinking about it though"},
+  {f:'iuno', t:"Then possibly yours."},
+]},
+
+{k:'domestic', m:[
+  {f:'me', t:"qingyan wants to know if you need anything carried"},
+  {f:'iuno', t:"Tell him I'll pay in fritters."},
+  {f:'me', t:"he says the rate is one fritter per four items and he can't carry tea"},
+  {f:'iuno', t:"Why not tea?"},
+  {f:'me', t:"he says tea is “a priestess job”"},
+  {f:'iuno', t:"He's correct. Four minutes. Nobody else gets it right."},
+]},
+
+{k:'care', m:[
+  {f:'me', t:"don't let me go iuiu"},
+  {f:'iuno', t:"I'm right here."},
+  {f:'me', t:"i know. i just like saying it"},
+  {f:'iuno', t:"Then keep saying it. I'll answer every time."},
+]},
+
+{k:'hp', m:[
+  {f:'iuno', t:"I made a list. Things I'm afraid of."},
+  {f:'me', t:"can i see"},
+  {f:'iuno', ph:"a pencilled list on a torn pad: 'Mei, bending. Amy, flying. Lupa, flying (she doesn't know I know). The left wheel. Tuesday.'"},
+  {f:'me', t:"tuesday's on there"},
+  {f:'iuno', t:"It's on the other list too. Same handwriting."},
+]},
+
+{k:'domestic', m:[
+  {f:'iuno', t:"Nyx has a tarp."},
+  {f:'me', t:"from the lane office?"},
+  {f:'iuno', t:"From Suisui, who got it from the lane office, who now owes her a favour, which she has already invoiced."},
+  {f:'me', t:"amy will cry"},
+  {f:'iuno', t:"Amy will say “whatever” and then sleep in Nyx's lap tonight. I'll bring a second blanket."},
+]},
+
+{k:'date', m:[
+  {f:'me', t:"the cart behind the laundry"},
+  {f:'iuno', t:"No."},
+  {f:'me', t:"you don't even know what i'm going to say"},
+  {f:'iuno', t:"You want to be pushed in it. To the hawthorn stall. By me. One-handed."},
+  {f:'me', t:"…amy could push"},
+  {f:'iuno', t:"Amy sings when she pushes."},
+  {f:'me', t:"that's the best part"},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_amy: [
+
+{k:'mad', m:[
+  {f:'amy', t:"still mad"},
+  {f:'me', t:"how many years left"},
+  {f:'amy', t:"ninety nine"},
+  {f:'me', t:"you took a year off?"},
+  {f:'amy', t:"you ate the bad hot chocolate and said thank you. that's a year"},
+]},
+
+{k:'mad', m:[
+  {f:'amy', t:"you smiled"},
+  {f:'me', t:"when"},
+  {f:'amy', t:"when the spar went in. you smiled at me like it was a sneeze"},
+  {f:'me', t:"you were scared. i wanted you to be less scared"},
+  {f:'amy', t:"i was MORE scared ma"},
+  {f:'me', t:"…ok"},
+  {f:'me', t:"next time i'll scream"},
+  {f:'amy', t:"good. scream. loudly"},
+]},
+
+{k:'nyx', m:[
+  {f:'amy', t:"nyx's left wing joint is stiff"},
+  {f:'me', t:"from the snare?"},
+  {f:'amy', t:"four days holding it. she never put it down"},
+  {f:'me', t:"neither did you"},
+  {f:'amy', t:"i'm her. that's how it works"},
+  {f:'me', t:"then go lie down too"},
+  {f:'amy', t:"i'm lying down IN her"},
+]},
+
+{k:'nyx', m:[
+  {f:'amy', t:"someone has to hold my body when i transfer and auntie said she's busy"},
+  {f:'me', t:"i'll hold it"},
+  {f:'amy', t:"you can't hold things"},
+  {f:'me', t:"i can hold YOU. you're on a bench, i'll just sit next to you"},
+  {f:'amy', t:"…ok but no tickling"},
+  {f:'me', t:"one tickle"},
+  {f:'amy', t:"MA"},
+]},
+
+{k:'song', m:[
+  {f:'me', t:"almost home almost home"},
+  {f:'amy', t:"stop"},
+  {f:'me', t:"bad wheel bad wheel"},
+  {f:'amy', t:"i will DELETE your terminal"},
+  {f:'me', t:"you sang it half a tone down on the bump"},
+  {f:'amy', t:"the cart dropped half a tone. i was in tune with the CART"},
+]},
+
+{k:'domestic', m:[
+  {f:'amy', ph:"Amy's notebook open: 'Ma: turtles (again). Ma: hawthorn, 2nd past dyer. Ma: no lifting (she lifted)'"},
+  {f:'me', t:"you're keeping a list on me"},
+  {f:'amy', t:"i'm keeping a list FOR you. it's a service"},
+  {f:'me', t:"what's the turtles one"},
+  {f:'amy', t:"you said “look a turtle” three times on the walkway and it was a rock all three times"},
+]},
+
+{k:'relay', m:[
+  {f:'amy', t:"liangyu's nainai talked for eleven minutes on the lane line"},
+  {f:'me', t:"what about"},
+  {f:'amy', t:"pancakes. her knees. a neighbour she hates. liangyu just stood there going “mm. mm. mm.”"},
+  {f:'me', t:"that's how you know it worked"},
+  {f:'amy', t:"i know. i cried in the relay booth. don't tell anyone"},
+  {f:'me', t:"i'll tell no one"},
+]},
+
+{k:'domestic', m:[
+  {f:'amy', t:"auntie called me amymy again"},
+  {f:'me', t:"you said she used up the licence"},
+  {f:'amy', t:"she did. she's operating without one now"},
+  {f:'me', t:"are you going to report her"},
+  {f:'amy', t:"i'm going to let her drive one more time"},
+]},
+
+{k:'moonwheel', m:[
+  {f:'amy', t:"for the record the moonwheel flight was your idea"},
+  {f:'me', t:"for the record you said “do it ma”"},
+  {f:'amy', t:"i said “should we do it ma” in a questioning way"},
+  {f:'me', t:"you were already in the seat"},
+  {f:'amy', t:"i was LEANING on the seat"},
+  {f:'me', t:"with the throttle in your hand"},
+  {f:'amy', t:"…ninety nine years"},
+]},
+
+{k:'tuesday', m:[
+  {f:'amy', t:"ma"},
+  {f:'amy', t:"is it this tuesday"},
+  {f:'me', t:"that's her secret to tell"},
+  {f:'amy', t:"you KNOW know"},
+  {f:'me', t:"i know there's a tuesday. i'm letting her have the surprise"},
+  {f:'amy', t:"ugh. that's so nice. i hate it"},
+  {f:'amy', t:"can i be there"},
+  {f:'me', t:"you're always there"},
+]},
+
+{k:'yangyang', m:[
+  {f:'amy', t:"yangyang let me fly shimei yesterday"},
+  {f:'me', t:"crew rotates"},
+  {f:'amy', t:"she held the spool for nine minutes. still as a post"},
+  {f:'me', t:"did she say anything"},
+  {f:'amy', t:"“higher.” once. then “good.” and her collar went up"},
+  {f:'me', t:"that's a whole speech for her"},
+]},
+
+{k:'domestic', m:[
+  {f:'amy', t:"abby ate four portions of wen's pancakes"},
+  {f:'me', t:"i felt it"},
+  {f:'amy', t:"he says it was “diplomatic tasting”"},
+  {f:'me', t:"he moved something around in me again"},
+  {f:'amy', t:"what"},
+  {f:'me', t:"something that's been in the same spot since rinascita. it's somewhere else now"},
+  {f:'amy', t:"…is that good or bad"},
+  {f:'me', t:"it feels roomier"},
+]},
+
+{k:'warmth', m:[
+  {f:'amy', t:"i want to go to septimont"},
+  {f:'me', t:"we'll go"},
+  {f:'amy', t:"like from above. on the moonwheel. with auntie DRIVING"},
+  {f:'me', t:"she'll say yes"},
+  {f:'amy', t:"she'll say “absolutely not” and then ask what time"},
+]},
+
+{k:'mad', m:[
+  {f:'amy', t:"98"},
+  {f:'me', t:"what did i do"},
+  {f:'amy', t:"you sat down before anyone told you to"},
+  {f:'me', t:"i was tired"},
+  {f:'amy', t:"i KNOW. you SAID so. 98"},
+]},
+
+{k:'night', m:[
+  {f:'amy', t:"are you awake"},
+  {f:'me', t:"yeah"},
+  {f:'amy', t:"can i come sleep on the floor"},
+  {f:'me', t:"there's a pallet. bring the quilt"},
+  {f:'amy', t:"auntie's snoring"},
+  {f:'me', t:"she'll deny it"},
+  {f:'amy', t:"coming"},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_yangyang: [
+
+{k:'plate', m:[
+  {f:'me', t:"plate by the stove"},
+  {f:'yangyang', t:"I saw. Under the cloth."},
+  {f:'me', t:"did you eat it"},
+  {f:'yangyang', t:"All of it. Suisui watched."},
+  {f:'me', t:"good"},
+  {f:'yangyang', t:"The tin's washed. I'll bring it to you."},
+]},
+
+{k:'promenade', m:[
+  {f:'yangyang', t:"The promenade is wet. If you want to walk, wear Suisui's slippers."},
+  {f:'me', t:"she'll know"},
+  {f:'yangyang', t:"She'll know either way. She counts them."},
+  {f:'me', t:"walk with me then"},
+  {f:'yangyang', t:"I'll be at the gate place."},
+]},
+
+{k:'canal', m:[
+  {f:'me', t:"jinzhou canal. when we get there"},
+  {f:'yangyang', t:"Yes."},
+  {f:'me', t:"the long one, by the tea shop"},
+  {f:'yangyang', t:"I'll find a route with benches. For your stitches."},
+  {f:'me', t:"you're making it a patrol"},
+  {f:'yangyang', t:"I'm making it so we get to the end."},
+]},
+
+{k:'log', m:[
+  {f:'yangyang', t:"Can I put something on the list."},
+  {f:'me', t:"the shijie list?"},
+  {f:'yangyang', t:"Yes. “Mei said ‘save me a plate’ and meant herself too.”"},
+  {f:'me', t:"put it on"},
+  {f:'yangyang', t:"Already in pencil. I'll ink it at the solstice."},
+]},
+
+{k:'watcher', m:[
+  {f:'yangyang', t:"They've written Watcher on my door."},
+  {f:'me', t:"how do you feel about it"},
+  {f:'yangyang', t:"I filed it."},
+  {f:'me', t:"yangyang"},
+  {f:'yangyang', t:"…I feel tall. The paint's still wet."},
+]},
+
+{k:'chixia', m:[
+  {f:'yangyang', t:"Chixia's crutch is called Yangyang now."},
+  {f:'me', t:"lmao"},
+  {f:'yangyang', t:"She shouts at it when the foot squeaks."},
+  {f:'me', t:"what does she shout"},
+  {f:'yangyang', t:"“Yangyang, quiet.” Then “Sorry, not you,” to me. Every call."},
+]},
+
+{k:'ribs', m:[
+  {f:'me', t:"how are the ribs"},
+  {f:'yangyang', t:"Three cracked. Two knitting. One sulking."},
+  {f:'me', t:"which one's sulking"},
+  {f:'yangyang', t:"Left, fourth. It complains when I laugh."},
+  {f:'me', t:"so it complains a lot"},
+  {f:'yangyang', t:"More this week."},
+]},
+
+{k:'kite', m:[
+  {f:'yangyang', t:"Noon. Amy flies. I hold the spool."},
+  {f:'me', t:"can i come"},
+  {f:'yangyang', t:"Sit on the steps. The wind comes off the gorge on the right."},
+  {f:'me', t:"you checked"},
+  {f:'yangyang', t:"I check every day. Shimei likes to know."},
+]},
+
+{k:'bird', m:[
+  {f:'yangyang', t:"My collar's up."},
+  {f:'me', t:"why"},
+  {f:'yangyang', t:"Liangyu sang the second half. At the wall. All the way through."},
+  {f:'me', t:"oh"},
+  {f:'yangyang', t:"I stood there for the whole watch."},
+]},
+
+{k:'plate', m:[
+  {f:'yangyang', t:"You lifted the pot."},
+  {f:'me', t:"it was a small pot"},
+  {f:'yangyang', t:"Suisui saw. She's writing it down."},
+  {f:'me', t:"tell her it was empty"},
+  {f:'yangyang', t:"It had soup in it."},
+  {f:'me', t:"tell her it was mostly empty"},
+]},
+
+{k:'shijie', m:[
+  {f:'yangyang', t:"I dreamed she was ahead of me on a road."},
+  {f:'me', t:"good dream?"},
+  {f:'yangyang', t:"She turned around and said I was walking too fast."},
+  {f:'me', t:"were you"},
+  {f:'yangyang', t:"Yes. I slowed down. Then I woke up."},
+]},
+
+{k:'morning', m:[
+  {f:'yangyang', t:"morning"},
+  {f:'me', t:"you texted chixia first"},
+  {f:'yangyang', t:"Fifth bell. It's her bell."},
+  {f:'me', t:"what's my bell"},
+  {f:'yangyang', t:"Whenever the plate's empty."},
+]},
+
+{k:'steamed', m:[
+  {f:'yangyang', t:"I folded buns with Suisui."},
+  {f:'me', t:"i saw. half of them are perfect"},
+  {f:'yangyang', t:"Those are hers."},
+  {f:'me', t:"the other half look like little fists"},
+  {f:'yangyang', t:"Those are mine. They hold more filling."},
+  {f:'me', t:"i ate three of yours"},
+]},
+
+{k:'watcher', m:[
+  {f:'yangyang', t:"The Ministry wants my report on the Snare."},
+  {f:'me', t:"want help"},
+  {f:'yangyang', t:"You can tell me if I'm being too flat."},
+  {f:'me', t:"you're always too flat"},
+  {f:'yangyang', t:"Then tell me if it's flat enough for the Ministry."},
+]},
+
+{k:'night', m:[
+  {f:'yangyang', t:"The lantern in the corridor is lit."},
+  {f:'me', t:"suisui's"},
+  {f:'yangyang', t:"She says two doorways, one light."},
+  {f:'me', t:"which two"},
+  {f:'yangyang', t:"Mine and yours. She won't say it. The fan says it."},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_suisui: [
+
+{k:'invoice', m:[
+  {f:'suisui', t:"Invoice attached."},
+  {f:'suisui', ph:"a neat ledger page: 'Mei — slippers, silk, use of (3 evenings). Blanket, shared with Yangyang (2). Family rate: one dumpling.'"},
+  {f:'me', t:"one dumpling"},
+  {f:'suisui', t:"Payable to Dumpling. The bird."},
+  {f:'me', t:"suisui i love you"},
+  {f:'suisui', t:"That's not legal tender."},
+]},
+
+{k:'ministry', m:[
+  {f:'suisui', t:"Draft three of the objection. Would you read it?"},
+  {f:'me', t:"send it"},
+  {f:'suisui', t:"It's eleven pages."},
+  {f:'me', t:"send the first page"},
+  {f:'suisui', t:"The first page is mostly the word “sister.”"},
+  {f:'me', t:"send it"},
+]},
+
+{k:'ministry', m:[
+  {f:'suisui', t:"They want it in writing. Do you know how dangerous that is? Telling a Guild merchant to put it in writing?"},
+  {f:'me', t:"they have no idea"},
+  {f:'suisui', t:"I have an appendix."},
+  {f:'me', t:"oh no"},
+  {f:'suisui', t:"The appendix has an appendix."},
+]},
+
+{k:'yangyang', m:[
+  {f:'suisui', t:"She ate the plate."},
+  {f:'me', t:"all of it?"},
+  {f:'suisui', t:"She tried to give me half. I said it was invoiced to her."},
+  {f:'me', t:"you invoiced my plate"},
+  {f:'suisui', t:"I invoice everything I'm afraid of losing."},
+]},
+
+{k:'lantern', m:[
+  {f:'suisui', t:"I've started the eleventh lantern."},
+  {f:'me', t:"for the solstice?"},
+  {f:'suisui', t:"For Moon Waking. Early. She's here for this one."},
+  {f:'me', t:"suisui"},
+  {f:'suisui', ph:"a half-painted Xuanling lantern on a work table, a blue bird with white-tipped wings, the brush still wet"},
+  {f:'suisui', t:"Don't tell her. She'll pretend not to cry and her collar will tell everyone."},
+]},
+
+{k:'domestic', m:[
+  {f:'suisui', t:"You're on the bench again."},
+  {f:'me', t:"i'm allowed the bench"},
+  {f:'suisui', t:"You're on the bench holding a sack of rice."},
+  {f:'me', t:"it was ON the bench"},
+  {f:'suisui', t:"Put it on the floor. Gently. Then sit."},
+  {f:'me', t:"you sound like lupa"},
+  {f:'suisui', t:"Lupa and I have an agreement."},
+]},
+
+{k:'hsin', m:[
+  {f:'suisui', t:"A haw went missing off the Sentinel's tray this morning."},
+  {f:'me', t:"dumpling?"},
+  {f:'suisui', t:"The tray was on a balcony four storeys up."},
+  {f:'me', t:"dumpling has one stiff wing"},
+  {f:'suisui', t:"Then Dumpling is very motivated. I'm not asking further."},
+]},
+
+{k:'fan', m:[
+  {f:'me', t:"teach me the fan thing"},
+  {f:'suisui', t:"Which thing."},
+  {f:'me', t:"the one where you close it and everyone stops talking"},
+  {f:'suisui', t:"That's a wrist. Plus twenty years of people owing me money."},
+  {f:'me', t:"i have the wrist"},
+]},
+
+{k:'swans', m:[
+  {f:'suisui', ph:"a row of tiny paper swans on the long table, folded from ration slips, one at each place"},
+  {f:'me', t:"theres one at my place with a hat"},
+  {f:'suisui', t:"It's a nurse's cap. You're under supervision."},
+  {f:'me', t:"whose has a crown"},
+  {f:'suisui', t:"Abby's. He asked. In capitals."},
+]},
+
+{k:'singing', m:[
+  {f:'me', t:"you came in on time"},
+  {f:'suisui', t:"I always come in on time."},
+  {f:'me', t:"cia said you were flat"},
+  {f:'suisui', t:"Cia said I was flat and punctual. She said it was the best kind of flat."},
+  {f:'me', t:"she likes you"},
+  {f:'suisui', t:"She hums my line back to me in a key I can reach."},
+]},
+
+{k:'travel', m:[
+  {f:'suisui', t:"Train compartment reserved. Window seat with a back for you. Iuno beside."},
+  {f:'me', t:"thank you"},
+  {f:'suisui', t:"Yangyang facing. Amy wherever she lands. Lupa by the door."},
+  {f:'me', t:"lupa will want to stand"},
+  {f:'suisui', t:"Lupa doesn't like being inside a moving thing. I've put her by the door so she can see out."},
+  {f:'me', t:"how did you know"},
+  {f:'suisui', t:"Her tail on the moonwheel. I count things."},
+]},
+
+{k:'family', m:[
+  {f:'suisui', t:"I've stopped saying “your household.”"},
+  {f:'me', t:"what do you say"},
+  {f:'suisui', t:"I say “the household” and put us in the ledger under one heading."},
+  {f:'me', t:"suisui"},
+  {f:'suisui', t:"It saves ink."},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_cartethyia: [
+
+{k:'journey', m:[
+  {f:'cartethyia', t:"Mei the Knight's Journey has a new LEG"},
+  {f:'me', t:"where to"},
+  {f:'cartethyia', t:"The lower terraces. There's a man with tiny shoes for cats"},
+  {f:'me', t:"there are no cats"},
+  {f:'cartethyia', t:"There's Dumpling!! And the shoes are VERY small"},
+  {f:'me', t:"carte that's a bird"},
+  {f:'cartethyia', t:"Cia already said that. I bought two pairs anyway"},
+]},
+
+{k:'camellia', m:[
+  {f:'cartethyia', t:"She's alive"},
+  {f:'me', t:"tell her hi from me"},
+  {f:'cartethyia', t:"She's alive and she has two new tips today Mei, TWO"},
+  {f:'me', t:"tell cantarella"},
+  {f:'cartethyia', t:"I did. She said “Good girl.” I don't know if she meant me or the plant"},
+  {f:'me', t:"both"},
+]},
+
+{k:'tuesday', m:[
+  {f:'cartethyia', t:"I'm being very good about Tuesday"},
+  {f:'me', t:"carte"},
+  {f:'cartethyia', t:"I haven't said anything!! I've said NOTHING. To EVERYONE. Loudly"},
+  {f:'me', t:"you said “no” in capitals in the bimbos chat"},
+  {f:'cartethyia', t:"That was silence with confidence"},
+]},
+
+{k:'puppets', m:[
+  {f:'cartethyia', ph:"two lacquered teacup puppets propped against a cup: a knight with a chipped plume, a bard with a fingernail-sized lute"},
+  {f:'me', t:"is the knight wearing a bandage"},
+  {f:'cartethyia', t:"I gave Cia's puppet a bandage on its hand so they'd match"},
+  {f:'me', t:"then why's the knight wearing one"},
+  {f:'cartethyia', t:"Solidarity!!"},
+]},
+
+{k:'dolls', m:[
+  {f:'cartethyia', t:"I'm making Qingyan a doll"},
+  {f:'me', t:"what's it of"},
+  {f:'cartethyia', t:"A turnip. With a sword. He named it before I finished"},
+  {f:'me', t:"what's its name"},
+  {f:'cartethyia', t:"Delegate"},
+]},
+
+{k:'fleur', m:[
+  {f:'cartethyia', t:"Can I carry you to the overlook as Fleurdelys"},
+  {f:'me', t:"iuno said no carrying"},
+  {f:'cartethyia', t:"She said no LIFTING. I'd be carrying"},
+  {f:'me', t:"that's a lawyer move"},
+  {f:'cartethyia', t:"Suisui taught me!!"},
+]},
+
+{k:'food', m:[
+  {f:'cartethyia', t:"THE FISH HAS ARRIVED"},
+  {f:'me', t:"is chisa there"},
+  {f:'cartethyia', t:"Yes! I'm describing it to her! It's silvery and very proud of itself and Wen put ginger on its back like a little coat"},
+  {f:'me', t:"what did chisa say"},
+  {f:'cartethyia', t:"“Good.”"},
+]},
+
+{k:'cosimo', m:[
+  {f:'cartethyia', t:"Uncle Cosimo sent a photo of the table"},
+  {f:'cartethyia', ph:"a long table in Egla laid for fifteen, Rosa's lemon cakes stacked high at one end, a hand-lettered card: KNIGHT + GUESTS"},
+  {f:'me', t:"fifteen chairs"},
+  {f:'cartethyia', t:"He's counting Abby and Nyx"},
+  {f:'me', t:"nyx won't fit through the door"},
+  {f:'cartethyia', t:"He says he'll take the door off"},
+]},
+
+{k:'night', m:[
+  {f:'cartethyia', t:"Mei are you asleep"},
+  {f:'me', t:"almost"},
+  {f:'cartethyia', t:"The lantern in the corridor is lit. I can see your door from mine"},
+  {f:'me', t:"suisui's lantern"},
+  {f:'cartethyia', t:"I'm going to name it"},
+  {f:'me', t:"what"},
+  {f:'cartethyia', t:"Corridor Keeper. Goodnight!!"},
+]},
+
+{k:'cia', m:[
+  {f:'cartethyia', t:"Cia let me hold her bad hand while she slept"},
+  {f:'me', t:"carte"},
+  {f:'cartethyia', t:"Very lightly. Like a bird. She said “carty” in her sleep"},
+  {f:'me', t:"in seven-eight?"},
+  {f:'cartethyia', t:"In common time. I checked"},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_lupa: [
+
+{k:'rope', m:[
+  {f:'lupa', t:"Where are you."},
+  {f:'me', t:"overlook"},
+  {f:'lupa', t:"Sitting?"},
+  {f:'me', t:"butt on stone, yes"},
+  {f:'lupa', t:"Good. Six metres. I'm coming up."},
+]},
+
+{k:'flying', m:[
+  {f:'me', t:"lupa about the moonwheel"},
+  {f:'lupa', t:"Don't."},
+  {f:'me', t:"you bit the rim"},
+  {f:'lupa', t:"I gripped the rim."},
+  {f:'me', t:"with your teeth"},
+  {f:'lupa', t:"Mei."},
+  {f:'me', t:"i'm sorry i flew so badly. i'll never fly you again unless you ask"},
+  {f:'lupa', t:"…Thank you."},
+]},
+
+{k:'flying', m:[
+  {f:'lupa', t:"Chisa knows. About the flying."},
+  {f:'me', t:"i know she knows"},
+  {f:'lupa', t:"Now you know."},
+  {f:'me', t:"i kind of guessed from the teeth"},
+  {f:'lupa', t:"Keep it in the pack."},
+  {f:'me', t:"deal"},
+]},
+
+{k:'food', m:[
+  {f:'lupa', t:"Eat the fish."},
+  {f:'me', t:"i ate the fish"},
+  {f:'lupa', t:"Eat the second fish."},
+  {f:'me', t:"there's a second fish?"},
+  {f:'lupa', t:"In your bowl. I put it there."},
+]},
+
+{k:'dragon', m:[
+  {f:'lupa', t:"Carte's dragon is in the kitchen now."},
+  {f:'me', t:"you moved it"},
+  {f:'lupa', t:"I hung it over the stove. It can watch the soup."},
+  {f:'me', t:"that's actually nice"},
+  {f:'lupa', t:"It keeps the steam off Wen's face."},
+]},
+
+{k:'arithmetic', m:[
+  {f:'lupa', t:"You offered to carry Qingyan's crate."},
+  {f:'me', t:"i offered"},
+  {f:'lupa', t:"Who pays if your stitches open?"},
+  {f:'me', t:"me"},
+  {f:'lupa', t:"Iuno. Then Amy. Then me, because I'm the one who has to hold Iuno."},
+  {f:'me', t:"…i'll let him delegate"},
+]},
+
+{k:'bo', m:[
+  {f:'lupa', t:"Wen asked if Bo likes peppercorns."},
+  {f:'me', t:"does he"},
+  {f:'lupa', t:"He'll pretend he hates them. Then the jar will be empty."},
+  {f:'me', t:"so yes"},
+  {f:'lupa', t:"Yes."},
+]},
+
+{k:'medal', m:[
+  {f:'me', t:"did you bring the medal"},
+  {f:'lupa', t:"My half."},
+  {f:'me', t:"where is it"},
+  {f:'lupa', ph:"a framed half-medal propped on a crate in the storehouse, a candied haw balanced on top of the frame"},
+  {f:'me', t:"why is there a haw on it"},
+  {f:'lupa', t:"I didn't put it there."},
+]},
+
+{k:'chisa', m:[
+  {f:'lupa', t:"Chisa fell asleep on my tail."},
+  {f:'me', t:"cute"},
+  {f:'lupa', t:"I can't move for an hour."},
+  {f:'me', t:"you're texting me so you don't wake her"},
+  {f:'lupa', t:"Yes. Talk to me."},
+]},
+
+{k:'feelings', m:[
+  {f:'me', t:"thank you for the stool"},
+  {f:'lupa', t:"What stool."},
+  {f:'me', t:"the one you hooked under me before i sat on nothing"},
+  {f:'lupa', t:"Don't make a speech about it."},
+  {f:'me', t:"that was four words"},
+  {f:'lupa', t:"It was a speech."},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_ciaccona: [
+
+{k:'hand', m:[
+  {f:'ciaccona', t:"four days. the hand is on holiday for four days. laevatain says"},
+  {f:'me', t:"what day is it"},
+  {f:'ciaccona', t:"day two. i have composed a lament"},
+  {f:'me', t:"one handed?"},
+  {f:'ciaccona', t:"one handed and in seven-eight. it limps. on purpose"},
+]},
+
+{k:'chronicle', m:[
+  {f:'ciaccona', t:"chronicle question. how do you spell qingyan"},
+  {f:'me', t:"q i n g y a n"},
+  {f:'ciaccona', t:"he's getting a whole entry. “the boy who delegated six turnips to a champion and a priestess and was obeyed”"},
+  {f:'me', t:"put a star next to it"},
+  {f:'ciaccona', t:"two stars. he earned the second one with the scabbard"},
+]},
+
+{k:'pitch', m:[
+  {f:'ciaccona', t:"chisa told you about the core?"},
+  {f:'me', t:"the quarter tone"},
+  {f:'ciaccona', t:"i heard it too. it went down like someone sighing"},
+  {f:'me', t:"is that bad"},
+  {f:'ciaccona', t:"it sounded tired. tired is a thing i can work with"},
+]},
+
+{k:'carte', m:[
+  {f:'ciaccona', t:"carte paid triple for an awning. there was no awning in the deal. she bought it off the roof"},
+  {f:'me', t:"CARTE"},
+  {f:'ciaccona', t:"the man had to climb up and take it down. he cried a bit. she paid him extra for the crying"},
+  {f:'me', t:"where's the awning now"},
+  {f:'ciaccona', t:"over nyx"},
+]},
+
+{k:'song', m:[
+  {f:'ciaccona', t:"the bad wheel song. i transcribed it"},
+  {f:'me', t:"amy will kill you"},
+  {f:'ciaccona', t:"amy has a beautiful instinct for the drop. half a tone on the bump. she hears it and doesn't know she does"},
+  {f:'me', t:"tell her that"},
+  {f:'ciaccona', t:"on thursday. if it's true it'll still be true"},
+]},
+
+{k:'tuesday', m:[
+  {f:'ciaccona', t:"i'm writing something for tuesday"},
+  {f:'me', t:"cia"},
+  {f:'ciaccona', t:"in common time. for once. iuno can't count seven-eight with her heart doing that"},
+  {f:'me', t:"what's it about"},
+  {f:'ciaccona', t:"a coat pocket"},
+]},
+
+{k:'hand', m:[
+  {f:'me', t:"how's the hand"},
+  {f:'ciaccona', t:"it twitched a chord in my sleep. carte says it was a d"},
+  {f:'me', t:"was it"},
+  {f:'ciaccona', t:"it was d minor. she's very generous with major"},
+]},
+
+{k:'suisui', m:[
+  {f:'ciaccona', t:"suisui sings flat and comes in on time and i want to marry the timing"},
+  {f:'me', t:"marry carte"},
+  {f:'ciaccona', t:"carte comes in early and sharp and enormous"},
+  {f:'me', t:"so yes"},
+  {f:'ciaccona', t:"…shut up mei"},
+]},
+
+{k:'hsin', m:[
+  {f:'ciaccona', t:"the sentinel hums. did you know"},
+  {f:'me', t:"what does she hum"},
+  {f:'ciaccona', t:"the bad wheel song. she's a quarter tone flat on purpose to see if i'll correct her"},
+  {f:'me', t:"did you"},
+  {f:'ciaccona', t:"i hummed it back a quarter tone sharp. we're at war"},
+]},
+
+{k:'chronicle', m:[
+  {f:'ciaccona', ph:"a page of the chronicle: 'Day 11. The wolf was decorated in her sleep. The knight denied all charges. A small uneven star.'"},
+  {f:'me', t:"the wolf was decorated"},
+  {f:'ciaccona', t:"the dragon. on her face. it's history now"},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_chisa: [
+
+{k:'report', m:[
+  {f:'chisa', t:"You're breathing high again."},
+  {f:'me', t:"i'm upstairs. how can you tell"},
+  {f:'chisa', t:"The floor. Your weight's forward."},
+  {f:'me', t:"it pulls a bit"},
+  {f:'chisa', t:"Sit back. Breathe into the bottom of it. I'll tell Iuno at the third bell."},
+]},
+
+{k:'core', m:[
+  {f:'chisa', t:"The Core went down a quarter-tone. Four breaths."},
+  {f:'me', t:"should i be worried"},
+  {f:'chisa', t:"I am reporting. You decide."},
+  {f:'me', t:"are you worried"},
+  {f:'chisa', t:"I have it memorised. I'm listening every hour."},
+]},
+
+{k:'good', m:[
+  {f:'me', t:"baizhi says i can probably ride the train"},
+  {f:'chisa', t:"Good."},
+  {f:'me', t:"you got that from her"},
+  {f:'chisa', t:"I've always said good."},
+  {f:'me', t:"you used to say “that is acceptable”"},
+  {f:'chisa', t:"Good is shorter."},
+]},
+
+{k:'lupa', m:[
+  {f:'chisa', t:"Lupa's tail did nothing for six minutes after the moonwheel."},
+  {f:'me', t:"is she ok"},
+  {f:'chisa', t:"She's ok now. She ate two bowls."},
+  {f:'me', t:"you were with her"},
+  {f:'chisa', t:"I put my hand on her back. She leaned. Then the tail came back."},
+]},
+
+{k:'yangyang', m:[
+  {f:'chisa', t:"Yangyang walks heavier on the left. The fourth rib."},
+  {f:'me', t:"she said it sulks"},
+  {f:'chisa', t:"That's accurate."},
+  {f:'me', t:"anything else"},
+  {f:'chisa', t:"Her voice drops when she says your name. Then her collar goes up."},
+  {f:'me', t:"chisa"},
+  {f:'chisa', t:"I'm reporting."},
+]},
+
+{k:'mother', m:[
+  {f:'chisa', t:"My mother asked what I'm eating."},
+  {f:'me', t:"what did you tell her"},
+  {f:'chisa', t:"Carte describes everything. I listed it from her."},
+  {f:'me', t:"so the fish had a little coat"},
+  {f:'chisa', t:"I told her the fish had a little coat. She says she wants the recipe for the coat."},
+]},
+
+{k:'bowl', m:[
+  {f:'chisa', t:"The soldier's bowl. The one I mended."},
+  {f:'me', t:"yeah"},
+  {f:'chisa', t:"He brought it back today. Full of dumplings. For me."},
+  {f:'me', t:"did it hold"},
+  {f:'chisa', t:"Up to the seam. He ate the top layer first, carefully."},
+]},
+
+{k:'string', m:[
+  {f:'chisa', ph:"a left wrist tied with a faded red string, a new knot over the old one"},
+  {f:'me', t:"you retied it"},
+  {f:'chisa', t:"Every morning."},
+  {f:'me', t:"tight?"},
+  {f:'chisa', t:"Snug. Sumika tied them snug."},
+]},
+
+{k:'tuesday', m:[
+  {f:'chisa', t:"Iuno checked her coat pocket nine times at breakfast."},
+  {f:'me', t:"you counted"},
+  {f:'chisa', t:"Her elbow moves. I hear the fabric."},
+  {f:'me', t:"tell her i looked at the floor"},
+  {f:'chisa', t:"You looked at the floor very loudly."},
+]},
+
+{k:'abby', m:[
+  {f:'chisa', t:"Abby sounds different today."},
+  {f:'me', t:"different how"},
+  {f:'chisa', t:"Lower. He's eaten more. He hums when he's full."},
+  {f:'me', t:"he hums in me"},
+  {f:'chisa', t:"I know. Your sternum carries it."},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_lynae: [
+
+{k:'bag', m:[
+  {f:'lynae', t:"bag still packed"},
+  {f:'me', t:"i know"},
+  {f:'lynae', t:"just saying it so it's true"},
+  {f:'me', t:"few weeks"},
+  {f:'lynae', t:"rebecca crossed off another day. she uses a ruler"},
+]},
+
+{k:'hurt', m:[
+  {f:'lynae', t:"chisa said front to back"},
+  {f:'me', t:"it's ok now"},
+  {f:'lynae', t:"show me"},
+  {f:'me', ph:"a clean dressing under a loose shirt, a bean in Mei's other hand for scale"},
+  {f:'lynae', t:"why is there a bean"},
+  {f:'me', t:"i'm shelling for a grandmother"},
+  {f:'lynae', t:"of course you are"},
+]},
+
+{k:'tuesday', m:[
+  {f:'lynae', t:"ok what is tuesday. carte said no in capitals"},
+  {f:'me', t:"can you keep a secret"},
+  {f:'lynae', t:"i was a mercenary mei"},
+  {f:'me', t:"iuno has a ring in her coat pocket"},
+  {f:'lynae', t:"…"},
+  {f:'lynae', t:"I'M SCREAMING INTO MY PILLOW"},
+  {f:'lynae', t:"rebecca asked if i'm ok. i said a tree fell"},
+]},
+
+{k:'paint', m:[
+  {f:'lynae', ph:"a fresh mural on a dorm stairwell wall: nine small figures and a kite, a tall robot in the background with a star on its left knee"},
+  {f:'me', t:"LYNAE"},
+  {f:'lynae', t:"sigma logged it as vandalism"},
+  {f:'me', t:"is the kite shimei"},
+  {f:'lynae', t:"amy sent me a pic. i gave it a moustache"},
+  {f:'me', t:"how did you know about the moustache"},
+  {f:'lynae', t:"amy complained for an hour"},
+]},
+
+{k:'rebecca', m:[
+  {f:'lynae', t:"rebecca wants to know if you'll be back for the first frost"},
+  {f:'me', t:"is that a thing"},
+  {f:'lynae', t:"she says the trees go quiet and she likes them then"},
+  {f:'me', t:"tell her we'll try"},
+  {f:'lynae', t:"she says “try harder”"},
+]},
+
+{k:'onigiri', m:[
+  {f:'lynae', t:"2am onigiri"},
+  {f:'lynae', ph:"two lopsided rice balls on a desk lit by a terminal, one with a seaweed smile"},
+  {f:'me', t:"it's 2am there?"},
+  {f:'lynae', t:"it's 2am in my heart"},
+  {f:'me', t:"go to bed naeun"},
+  {f:'lynae', t:"ugh. fine. you too"},
+]},
+
+{k:'yangyang', m:[
+  {f:'lynae', t:"who's the feather collar girl"},
+  {f:'me', t:"yangyang. she's family now"},
+  {f:'lynae', t:"amy says you promised her a canal walk"},
+  {f:'me', t:"i did"},
+  {f:'lynae', t:"does iuno know"},
+  {f:'me', t:"iuno said “good, she should have one”"},
+  {f:'lynae', t:"ok iuno is the most secure woman alive"},
+]},
+
+{k:'goodnight', m:[
+  {f:'me', t:"goodnight naeun"},
+  {f:'lynae', t:"…"},
+  {f:'lynae', t:"you can't just do that from huanglong"},
+  {f:'me', t:"i just did"},
+  {f:'lynae', t:"goodnight mei. rest the hole"},
+]},
+
+]});
+
+/* ── Huanglong DMs ──────────────────────────────────────────── */
+Object.assign(SCENES_XUANFANG, { t_abby: [
+
+{k:'citizen', m:[
+  {f:'abby', t:"MEI. I AM COLUMN TWELVE. I HAVE PAPERS"},
+  {f:'me', t:"i know buddy"},
+  {f:'abby', t:"RESIDENT SELF DIRECTED DICTATION ACCEPTED STANDARD RATES"},
+  {f:'me', t:"you read it every morning"},
+  {f:'abby', t:"IT IS MY CONSTITUTION"},
+]},
+
+{k:'rude', m:[
+  {f:'abby', t:"THE HOLE IS DRAFTY"},
+  {f:'me', t:"sorry"},
+  {f:'abby', t:"I HAVE MOVED THE THING FROM RINASCITA TO BLOCK IT"},
+  {f:'me', t:"what thing"},
+  {f:'abby', t:"THE HEAVY THING. IT WAS DOING NOTHING. NOW IT IS A DOOR"},
+  {f:'me', t:"…thank you?"},
+  {f:'abby', t:"YOU ARE WELCOME. I WILL INVOICE"},
+]},
+
+{k:'food', m:[
+  {f:'abby', t:"FOUR PORTIONS. DIPLOMATIC TASTING. WEN IS AN AMBASSADOR"},
+  {f:'me', t:"wen is a cook"},
+  {f:'abby', t:"WEN IS AN AMBASSADOR OF PANCAKES"},
+  {f:'me', t:"fair"},
+]},
+
+{k:'lupa', m:[
+  {f:'abby', t:"THE OVERSIZED DOG STEPPED ON MY EAR"},
+  {f:'me', t:"you were on the floor"},
+  {f:'abby', t:"THE FLOOR IS MY JURISDICTION"},
+  {f:'me', t:"since when"},
+  {f:'abby', t:"SINCE I LEARNED THE WORD JURISDICTION"},
+]},
+
+{k:'dictation', m:[
+  {f:'abby', t:"TELL THE FAN WOMAN I WANT A SWAN WITH A CROWN"},
+  {f:'me', t:"she already made you one"},
+  {f:'abby', t:"A SECOND SWAN. FOR MY EMBASSY"},
+  {f:'me', t:"where's your embassy"},
+  {f:'abby', t:"YOUR LEFT LUNG"},
+]},
+
+{k:'rebecca', m:[
+  {f:'abby', t:"WHEN DO WE SEE THE WOMAN OF EXCELLENT DISCERNMENT"},
+  {f:'me', t:"rebecca? few weeks"},
+  {f:'abby', t:"SHE GAVE ME HER CHAIR. I HAVE NOT FORGOTTEN THE CHAIR"},
+  {f:'me', t:"she'll give you another one"},
+  {f:'abby', t:"I WILL ACCEPT IT WITH CEREMONY"},
+]},
+
+{k:'mishear', m:[
+  {f:'abby', t:"MEI THE SENTINEL GAVE ME A CANDIED HORSE"},
+  {f:'me', t:"a haw?"},
+  {f:'abby', t:"YES A HORSE"},
+  {f:'me', t:"HAW"},
+  {f:'abby', t:"THE DICTATION IS A TRAITOR. IT WAS DELICIOUS"},
+]},
+
+{k:'nyx', m:[
+  {f:'abby', t:"I SAT ON NYX'S HEAD"},
+  {f:'me', t:"amy let you?"},
+  {f:'abby', t:"AMY WAS INSIDE. NYX SAID NOTHING. SILENCE IS CONSENT"},
+  {f:'me', t:"that's amy's line"},
+  {f:'abby', t:"I HAVE ADOPTED IT INTO LAW"},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_chixia: [
+
+{k:'morning', m:[
+  {f:'chixia', t:"morning"},
+  {f:'chixia', t:"not you mei sorry yangyang's morning is a separate morning"},
+  {f:'chixia', t:"this is YOUR morning"},
+  {f:'me', t:"morning chixia"},
+  {f:'chixia', t:"MORNING"},
+  {f:'chixia', t:"ok that's both done"},
+]},
+
+{k:'stitches', m:[
+  {f:'chixia', t:"fourteen stitches"},
+  {f:'chixia', t:"baizhi counted them twice"},
+  {f:'chixia', t:"i counted fifteen but she says one of them is “a knot, not a stitch, Captain”"},
+  {f:'me', t:"how's the leg"},
+  {f:'chixia', t:"its good its fine its a LEG"},
+  {f:'chixia', t:"ok it hurts a lot when i stand"},
+  {f:'me', t:"then sit"},
+  {f:'chixia', t:"i'm SITTING i'm texting from SITTING"},
+]},
+
+{k:'crutch', m:[
+  {f:'chixia', t:"YANGYANG STOP SQUEAKING"},
+  {f:'chixia', t:"sorry wrong chat"},
+  {f:'chixia', t:"actually right chat. the crutch squeaks. tell yangyang i said sorry"},
+  {f:'me', t:"for the crutch or for the name"},
+  {f:'chixia', t:"for both but i'm keeping both"},
+]},
+
+{k:'window', m:[
+  {f:'chixia', t:"the window still doesn't latch"},
+  {f:'me', t:"my old window"},
+  {f:'chixia', t:"YOUR old window. the man is coming thursday"},
+  {f:'me', t:"which thursday"},
+  {f:'chixia', t:"mrs ren says “a thursday.” she's said it for three thursdays"},
+  {f:'me', t:"stuff a sock in it"},
+  {f:'chixia', t:"i stuffed baizhi's scarf in it. she hasn't noticed yet"},
+]},
+
+{k:'goose', m:[
+  {f:'chixia', t:"the goose is still at the tax office door"},
+  {f:'me', t:"did you win"},
+  {f:'chixia', t:"i WON. from bed. i remembered its census entry"},
+  {f:'chixia', t:"it's registered as a resident. it has to queue like everyone else"},
+  {f:'chixia', t:"jinhsi read the article number out loud and the goose went home"},
+  {f:'me', t:"that's the best thing i've ever heard"},
+  {f:'chixia', t:"MINUTE IT"},
+]},
+
+{k:'yangyang', m:[
+  {f:'chixia', t:"is she eating"},
+  {f:'me', t:"she eats the plate by the stove every night"},
+  {f:'chixia', t:"good"},
+  {f:'chixia', t:"she forgets"},
+  {f:'chixia', t:"she gets busy watching and she forgets"},
+  {f:'me', t:"suisui watches her eat"},
+  {f:'chixia', t:"ok i like suisui"},
+]},
+
+{k:'jinzhou', m:[
+  {f:'chixia', t:"when do you get here"},
+  {f:'me', t:"after mengzhou"},
+  {f:'chixia', t:"ok i'll have the bag"},
+  {f:'me', t:"what bag"},
+  {f:'chixia', t:"the paper bag. the oily one. i got extra"},
+  {f:'me', t:"you haven't bought it yet"},
+  {f:'chixia', t:"i'll get extra when i buy it"},
+]},
+
+{k:'baizhi', m:[
+  {f:'chixia', t:"baizhi stood at the gate from a quarter to eight"},
+  {f:'me', t:"for you?"},
+  {f:'chixia', t:"for the porter with my soup. she said it was “to check the temperature on arrival”"},
+  {f:'me', t:"she stood there for you"},
+  {f:'chixia', t:"i KNOW"},
+  {f:'chixia', t:"i'm crying. it's the stitches"},
+]},
+
+{k:'flood', m:[
+  {f:'chixia', t:"mei"},
+  {f:'chixia', t:"mei"},
+  {f:'chixia', t:"mei mei mei"},
+  {f:'chixia', t:"mrs ren made the soup with the little meatballs"},
+  {f:'chixia', t:"the GOOD meatballs"},
+  {f:'chixia', t:"i ate yangyangs share"},
+  {f:'chixia', t:"tell her i'll owe her"},
+  {f:'me', t:"she says “minute it”"},
+  {f:'chixia', t:"SHE STOLE MY LINE"},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_baizhi: [
+
+{k:'clinical', m:[
+  {f:'baizhi', t:"State your injuries."},
+  {f:'me', t:"one hole"},
+  {f:'baizhi', t:"Quantify."},
+  {f:'me', t:"a spar's worth. front to back. it itches"},
+  {f:'baizhi', t:"Itching is consistent with healing. Do not scratch. I have said so."},
+]},
+
+{k:'train', m:[
+  {f:'me', t:"can i ride the train wednesday"},
+  {f:'baizhi', t:"Seated. Back supported. Window side, so you are not jostled from two directions."},
+  {f:'me', t:"suisui already reserved exactly that"},
+  {f:'baizhi', t:"Then Suisui is a competent person and I will add her to the ledger."},
+]},
+
+{k:'chixia', m:[
+  {f:'baizhi', t:"The Captain reports the crutch is “fine.”"},
+  {f:'me', t:"is it"},
+  {f:'baizhi', t:"The rubber foot is worn through on the inside edge. She is walking on it. Frequently."},
+  {f:'me', t:"she said she's sitting"},
+  {f:'baizhi', t:"She is sitting between walks. I have entered it as a lie, warm, unquantified."},
+]},
+
+{k:'recordings', m:[
+  {f:'baizhi', t:"The Xuanling recordings are with Yangyang. Twelve cylinders."},
+  {f:'me', t:"thank you"},
+  {f:'baizhi', t:"The fourth has two birds. I will not establish causation for why the second is late."},
+  {f:'me', t:"you think it's her shijie"},
+  {f:'baizhi', t:"I think it's a very good recording."},
+]},
+
+{k:'ledger', m:[
+  {f:'baizhi', ph:"a ledger column headed in neat ink 'To be read in the room', a single entry underlined twice"},
+  {f:'me', t:"what's the entry"},
+  {f:'baizhi', t:"To be read in the room."},
+  {f:'me', t:"which room"},
+  {f:'baizhi', t:"The Captain's. When she can stand to hear it."},
+]},
+
+{k:'scarf', m:[
+  {f:'baizhi', t:"My scarf is missing."},
+  {f:'me', t:"…check chixia's window"},
+  {f:'baizhi', t:"I am aware it is in the Captain's window."},
+  {f:'me', t:"you're letting her keep it"},
+  {f:'baizhi', t:"It is a draught issue. I am treating the draught."},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_jinhsi: [
+
+{k:'report', m:[
+  {f:'jinhsi', t:"Good evening, Mei. I'm told you were run through by the mountain. Please tell me plainly how you are."},
+  {f:'me', t:"healing. sitting a lot. eating"},
+  {f:'jinhsi', t:"Thank you. That is the best possible order of those three words."},
+]},
+
+{k:'goose', m:[
+  {f:'jinhsi', t:"The Captain has asked me to tell you about the goose."},
+  {f:'me', t:"she told me"},
+  {f:'jinhsi', t:"She asked me to tell you formally. Article nineteen of the census ordinance. Residents queue."},
+  {f:'me', t:"and the goose went home"},
+  {f:'jinhsi', t:"The goose went home. I've never been prouder of an article."},
+]},
+
+{k:'yangyang', m:[
+  {f:'jinhsi', t:"The Ministry has forwarded Yangyang's reclassification to my desk."},
+  {f:'me', t:"watcher"},
+  {f:'jinhsi', t:"Watcher. I have also received four letters from her sister. In triplicate."},
+  {f:'me', t:"suisui"},
+  {f:'jinhsi', t:"I've invited her to tea. Sanhua says I should bring a second pot."},
+]},
+
+{k:'order', m:[
+  {f:'jinhsi', t:"Please tell Outrider Yangyang — Watcher Yangyang — to go and eat something."},
+  {f:'me', t:"she's eating"},
+  {f:'jinhsi', t:"Then please tell her it was an order and she followed it. She likes to be told."},
+]},
+
+{k:'arrival', m:[
+  {f:'jinhsi', t:"When you reach Jinzhou, the Court will make room at the long table. Mrs Ren has made room in the front room. Chixia has made room in her heart and is shouting about it."},
+  {f:'me', t:"thank you jinhsi"},
+  {f:'jinhsi', t:"Come by the canal. Somebody tells me there is a walk promised."},
+  {f:'me', t:"who told you"},
+  {f:'jinhsi', t:"A crutch, indirectly."},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_hsin: [
+
+{k:'wager', m:[
+  {f:'hsin', t:"Your merchant cheated."},
+  {f:'me', t:"suisui doesn't cheat"},
+  {f:'hsin', t:"She refused the terms of the question. That is a kind of cheating so honest I can't file it."},
+  {f:'me', t:"so you lost"},
+  {f:'hsin', t:"I paid one. Once. In four hundred years. Write it down."},
+]},
+
+{k:'mengzhou', m:[
+  {f:'me', t:"why mengzhou"},
+  {f:'hsin', t:"Ask me in Mengzhou."},
+  {f:'me', t:"i'm asking now"},
+  {f:'hsin', t:"And I'm answering now. The answer is in Mengzhou."},
+]},
+
+{k:'haws', m:[
+  {f:'hsin', t:"Somebody is stealing my haws."},
+  {f:'me', t:"a bird?"},
+  {f:'hsin', t:"A small round blue bird, stiff in one wing, very polite about it. I haven't accused anyone."},
+  {f:'me', t:"you're accusing me now"},
+  {f:'hsin', t:"I'm telling you a bird exists. You heard the rest."},
+]},
+
+{k:'wolf', m:[
+  {f:'hsin', t:"Your wolf bit my moonwheel's cousin."},
+  {f:'me', t:"that was iuno's moonwheel"},
+  {f:'hsin', t:"All moonwheels in this Hold are my cousins. I have the paperwork. I'm delighted."},
+  {f:'me', t:"delighted?"},
+  {f:'hsin', t:"I've learned more about the wolf in one rim than in four days of watching her. An educational resource."},
+]},
+
+{k:'catalogue', m:[
+  {f:'hsin', t:"I keep a catalogue of the household."},
+  {f:'me', t:"what's my entry"},
+  {f:'hsin', t:"“Sits when told. Then stands again when nobody's looking. Loves a fool loudly.”"},
+  {f:'me', t:"which fool"},
+  {f:'hsin', t:"I've never lied to you. You'll notice I listed several."},
+]},
+
+{k:'decor', m:[
+  {f:'me', t:"did you hang carte's dragon on lupa's face"},
+  {f:'hsin', t:"The dragon was hung by the knight. The fourth hook was installed by the Hold."},
+  {f:'me', t:"you installed the hook"},
+  {f:'hsin', t:"Four hundred years ago. Hooks are patient."},
+]},
+
+]});
+
+Object.assign(SCENES_XUANFANG, { t_liangyu: [
+
+{k:'nainai', m:[
+  {f:'liangyu', t:"Nainai says thank you to the girl with the robot."},
+  {f:'me', t:"amy"},
+  {f:'liangyu', t:"Amy. She says thank you to Amy. She'll make pancakes when you come through Mengzhou."},
+  {f:'me', t:"wen already makes yours with more salt"},
+  {f:'liangyu', t:"Nainai knows. She says Wen is close. Nainai has a sixty-year head start."},
+]},
+
+{k:'wall', m:[
+  {f:'liangyu', t:"North stretch. Quiet."},
+  {f:'me', t:"have you eaten"},
+  {f:'liangyu', t:"One fritter. Lupa watched."},
+  {f:'me', t:"suisui's sending another"},
+  {f:'liangyu', t:"I know. The runner is already on the stairs."},
+]},
+
+{k:'song', m:[
+  {f:'liangyu', t:"I sang the second half on the wall."},
+  {f:'me', t:"yangyang told me"},
+  {f:'liangyu', t:"She stood the whole watch. I thought she'd go to bed."},
+  {f:'me', t:"she wanted to hear it"},
+  {f:'liangyu', t:"It's hers too now. It came back through her."},
+]},
+
+{k:'skyworks', m:[
+  {f:'liangyu', t:"Skyworks report. Snare arms stable. Bolts reseated. No new cracks."},
+  {f:'me', t:"thank you"},
+  {f:'liangyu', t:"Tell Amy her robot's handprints are still in the frame. The engineers won't paint over them."},
+]},
+
+{k:'bed', m:[
+  {f:'me', t:"you're on the late round again"},
+  {f:'liangyu', t:"Yes."},
+  {f:'me', t:"go to bed after"},
+  {f:'liangyu', t:"That's my line. For the Outrider."},
+  {f:'me', t:"borrowing it"},
+  {f:'liangyu', t:"…Fine. Bed after."},
+]},
+
+{k:'chalk', m:[
+  {f:'liangyu', ph:"chalk under a carved line of verse on old stone: 'We'll keep them', a little faded by rain"},
+  {f:'me', t:"it's still there"},
+  {f:'liangyu', t:"I chalk it again after rain. Every time."},
+]},
+
+]});
+
+/* ── far away: Lahai-Roi, Septimont, Rinascita ─────────────── */
+Object.assign(SCENES_XUANFANG, {
+
+t_mornye: [
+{k:'map', m:[
+  {f:'mornye', t:"I've plotted Xuanfang to Lahai-Roi by rail, by lane, and by moonwheel."},
+  {f:'mornye', t:"Moonwheel is fastest. Moonwheel also assumes someone other than you is steering :)"},
+  {f:'me', t:"who told you"},
+  {f:'mornye', t:"Lupa sent a one-word message. It was “Mei.” I inferred the rest."},
+]},
+{k:'injury', m:[
+  {f:'mornye', t:"Iuno says through-and-through, lower left, missed the bowel."},
+  {f:'mornye', t:"What's the entry diameter?"},
+  {f:'me', t:"about a thumb"},
+  {f:'mornye', t:"Thank you. That's survivable and also very rude of the mountain :)"},
+  {f:'mornye', t:"Buddy sends a slow blink."},
+]},
+{k:'baldur', m:[
+  {f:'mornye', t:"I rebuilt the second chapter of the Baldur notes this week."},
+  {f:'me', t:"from memory?"},
+  {f:'mornye', t:"From my students' handwriting. They copied it better than I wrote it."},
+  {f:'me', t:"that's the good kind of ordinary"},
+  {f:'mornye', t:":)"},
+]},
+{k:'napkin', m:[
+  {f:'mornye', t:"Tell Iuno the answer is 4.6 and she owes me a pastry."},
+  {f:'me', t:"4.6 what"},
+  {f:'mornye', t:"She'll know. It's been a running napkin since Helios."},
+  {f:'me', t:"she says “4.7 and the pastry is mine”"},
+  {f:'mornye', t:"Then we're both buying pastries. Acceptable."},
+]},
+],
+
+t_augusta: [
+{k:'chair', m:[
+  {f:'augusta', t:"Galbrena reports the household has grown again."},
+  {f:'me', t:"two sisters, a bird, and abby got papers"},
+  {f:'augusta', t:"Bring another chair."},
+  {f:'me', t:"we're bringing several"},
+  {f:'augusta', t:"Then I'll bend more wire while I wait. It's becoming a basket."},
+]},
+{k:'iuno', m:[
+  {f:'augusta', t:"Iuno sent me a letter with the word “Tuesday” crossed out four times."},
+  {f:'me', t:"oh"},
+  {f:'augusta', t:"I've filed it under Septimont Affairs, Pending, Joyous. A category I created this morning."},
+  {f:'me', t:"she'd hate that"},
+  {f:'augusta', t:"She'd frame it. I know the woman."},
+]},
+{k:'septimont', m:[
+  {f:'me', t:"amy wants to see septimont from above"},
+  {f:'augusta', t:"From the moonwheel, I assume."},
+  {f:'me', t:"with iuno driving"},
+  {f:'augusta', t:"I'll clear the airspace over the Forum. Tell her the pigeons are unionised and to keep left."},
+]},
+{k:'wire', m:[
+  {f:'augusta', ph:"a coil of copper wire bent into a small, neat ring beside a seed catalogue open to camellias"},
+  {f:'augusta', t:"Practice."},
+  {f:'me', t:"for what"},
+  {f:'augusta', t:"For nothing. I'm a woman who bends wire. Ask Galbrena what she's polishing."},
+]},
+],
+
+t_luuk: [
+{k:'medic', m:[
+  {f:'luuk', t:"Mei. The name and training of whoever is changing your dressing, please."},
+  {f:'me', t:"iuno. on baizhi's instructions"},
+  {f:'luuk', t:"Baizhi of Huaxu? Ecoacoustics?"},
+  {f:'me', t:"she does medicine on the side"},
+  {f:'luuk', t:"I've read her papers. You're in good hands. Two of them, and one crystal."},
+]},
+{k:'candy', m:[
+  {f:'luuk', t:"The candy dish in my office has gone untouched for a month."},
+  {f:'me', t:"amy's away"},
+  {f:'luuk', t:"I've noticed. I keep refilling it anyway. Habit."},
+  {f:'me', t:"she'll empty it in one go when we're back"},
+  {f:'luuk', t:"I'm counting on it."},
+]},
+{k:'rest', m:[
+  {f:'luuk', t:"How many hours did you sleep?"},
+  {f:'me', t:"six"},
+  {f:'luuk', t:"Continuously?"},
+  {f:'me', t:"amy came to sleep on the floor at three"},
+  {f:'luuk', t:"Then four, and two. Please add a nap. I'll accept it in writing, like the Ministry."},
+]},
+],
+
+t_sigrika: [
+{k:'birds', m:[
+  {f:'sigrika', t:"Mei!! Yangyang's collar — is it a real Xuanling or a manifestation, because the field guides disagree and I've used all three colours"},
+  {f:'sigrika', t:"sorry that's long"},
+  {f:'sigrika', t:"also is there a small round blue bird near you, Amy said “dumpling” and I need the species"},
+  {f:'me', t:"suisui named it. it steals haws"},
+  {f:'sigrika', t:"BEHAVIOURAL DATA. thank you!!"},
+]},
+{k:'photo', m:[
+  {f:'me', ph:"a small round blue bird perched on a hawthorn skewer, one wing held a little stiff"},
+  {f:'sigrika', t:"oh she's PERFECT"},
+  {f:'sigrika', t:"New species!! Possibly!! Underlining twice"},
+  {f:'sigrika', t:"(green ink, it's a hypothesis)"},
+]},
+{k:'doubt', m:[
+  {f:'sigrika', t:"Mornye let me run the Spacetrek bench alone today"},
+  {f:'me', t:"how'd it go"},
+  {f:'sigrika', t:"it went fine and i've reread my notes nine times to find out why"},
+  {f:'me', t:"because you're good at it"},
+  {f:'sigrika', t:"…writing that in red. red is data"},
+]},
+],
+
+t_lucilla: [
+{k:'admin', m:[
+  {f:'lucilla', t:"Your field trip form listed “a short walk.” The Registrar is weeping."},
+  {f:'me', t:"it got longer"},
+  {f:'lucilla', t:"Walks do. I've extended it. Under “Diplomatic Recuperation.” The Registrar has stopped weeping and started taking notes."},
+]},
+{k:'hiyuki', m:[
+  {f:'lucilla', t:"Hiyuki said yes to tea."},
+  {f:'me', t:"FINALLY"},
+  {f:'lucilla', t:"Administrative tea. Quarterly review of the shrine budget."},
+  {f:'me', t:"lucilla"},
+  {f:'lucilla', t:"I've bought the good leaves. Leave the rest to the adults."},
+]},
+{k:'candy', m:[
+  {f:'lucilla', ph:"a sour candy in a twist of foil on a presidential desk, a sticky note: 'for the bimbos, on arrival'"},
+  {f:'me', t:"is that for us"},
+  {f:'lucilla', t:"It's for whoever makes the worst face. I've bet on Iuno."},
+]},
+],
+
+t_hiyuki: [
+{k:'tea', m:[
+  {f:'hiyuki', t:"Lucilla and I took tea."},
+  {f:'me', t:"how was it"},
+  {f:'hiyuki', t:"Mm."},
+  {f:'hiyuki', t:"Long."},
+  {f:'me', t:"good long?"},
+  {f:'hiyuki', t:"The pot went cold twice."},
+]},
+{k:'carry', m:[
+  {f:'hiyuki', t:"Your Warden. Liangyu."},
+  {f:'me', t:"yeah"},
+  {f:'hiyuki', t:"Her senior comrades. If she wants them carried, I have room."},
+  {f:'me', t:"i'll tell her"},
+  {f:'hiyuki', t:"Tell her it's a library. They'd be lent, and returned when she asks."},
+]},
+{k:'heron', m:[
+  {f:'hiyuki', ph:"a lumpy wooden carving beside a shrine bell, unmistakably meant to be a heron, with great dignity"},
+  {f:'me', t:"it's beautiful"},
+  {f:'hiyuki', t:"It's a heron."},
+  {f:'me', t:"it's so dignified"},
+  {f:'hiyuki', t:"Mm. I'm making a fox next. For the Sentinel."},
+]},
+],
+
+t_sigma: [
+{k:'system', m:[
+  {sys:'CAMPUS GATE — S.I.G.M.A. · automated'},
+  {f:'sigma', t:'ABSENCE LOG: HOUSEHOLD (9) ABSENT. DAY 23.'},
+  {f:'sigma', t:'FORM 6-C ON FILE: “A SHORT WALK.” DISCREPANCY NOTED.'},
+  {f:'sigma', t:'PRESIDENTIAL OVERRIDE APPLIED. DISCREPANCY RETAINED FOR MY RECORDS.'},
+]},
+{k:'system', m:[
+  {sys:'CAMPUS GATE — S.I.G.M.A. · automated'},
+  {f:'sigma', t:'GATE LOG: 1 RESIDENT (LEE N.) AT GATE 22:10. NO VEHICLES INBOUND. RESIDENT RETURNED INSIDE 22:31.'},
+  {f:'sigma', t:'GATE LOG: SAME RESIDENT AT GATE 22:50. NO VEHICLES INBOUND.'},
+  {f:'sigma', t:'GATE LIGHTS LEFT ON. ENERGY EXCEPTION FILED UNDER: MORALE.'},
+]},
+{k:'system', m:[
+  {sys:'CAMPUS GATE — S.I.G.M.A. · automated'},
+  {f:'sigma', t:'VANDALISM: STAIRWELL B. MURAL (9 FIGURES, 1 KITE, 1 LARGE ROBOT).'},
+  {f:'sigma', t:'REMOVAL SCHEDULED: THURSDAY.'},
+  {f:'sigma', t:'REMOVAL RESCHEDULED: UNSPECIFIED THURSDAY.'},
+]},
+],
+
+t_noodles: [
+{k:'system', m:[
+  {sys:'MENGZHOU NOODLES — Riseway branch'},
+  {f:'noodles', t:"We haven't seen the usual ×9 in 23 days 🥺 Is everybody ok??"},
+  {f:'me', t:'we\'re in huanglong! coming back in a few weeks'},
+  {f:'noodles', t:'HUANGLONG!! Our grandfather is from Mengzhou!! Eat at the river stall by the bell tower and tell them Riseway sent you 🍜🍜'},
+]},
+{k:'system', m:[
+  {sys:'MENGZHOU NOODLES — Riseway branch'},
+  {f:'noodles', t:'Order for LYNAE received!! 1× house bowl, extra egg 🍜'},
+  {f:'noodles', t:'She says to stamp the household card 🥹'},
+  {f:'noodles', t:'Loyalty stamps: 23. ONE MORE for a free bowl!! We are saving it for your return!!'},
+]},
+],
+
+t_cantarella: [
+{k:'camellia', m:[
+  {f:'cantarella', t:"Cartethyia has sent me fourteen photographs of the same leaf. I have studied each with the attention it deserves, which is a great deal, because she took them. Please tell her the cutting will survive the train if she wraps the terrarium in a damp cloth and resists the urge to check it at every station."},
+  {f:'cantarella', t:"She will check it at every station."},
+]},
+{k:'injury', m:[
+  {f:'cantarella', t:"I hear the mountain disagreed with you. Through you, specifically."},
+  {f:'me', t:"it's healing"},
+  {f:'cantarella', t:"I've sent a tincture with the Ragunna courier. Bitter. Do not let the Echo drink it."},
+]},
+],
+
+t_carlotta: [
+{k:'press', m:[
+  {f:'carlotta', t:"1. The Huanglong papers are calling Nyx “the White Lady of the Skyworks.” 2. Amy has been quoted. 3. She said “whatever.” It ran on the front page."},
+  {f:'carlotta', t:"I'd like a usable account for the morning edition, when you're upright."},
+]},
+{k:'ledger', m:[
+  {f:'carlotta', t:"Your Guild column-twelve resident has filed a dictation invoice with my office for “emotional labour, dog-related.”"},
+  {f:'me', t:"abby"},
+  {f:'carlotta', t:"I've paid it. One haw. It was the cheapest invoice I've received this year."},
+]},
+],
+
+t_nivora: [
+{k:'theatre', m:[
+  {f:'nivora', t:"I hear Xuanfang has a fox who never lies. How refreshing for you!"},
+  {f:'nivora', t:"Give her my regards. She'll know which ones."},
+]},
+],
+
+t_phrolova: [
+{k:'tempo', m:[
+  {f:'phrolova', t:"A bard tells me your daughter improvised a lament in a moving cart and dropped it half a tone at the exact bar the wheel faltered."},
+  {f:'phrolova', t:"I've spent three decades trying to teach orchestras to listen to the floor. Tell her she's hired."},
+  {f:'me', t:"she'll say whatever"},
+  {f:'phrolova', t:"That is how the best ones accept."},
+]},
+],
+
+t_agrat: [
+{k:'bead', m:[
+  {f:'agrat', t:"A woman with a ring in her coat pocket checks it nine times at breakfast."},
+  {f:'agrat', t:"I'm told. I'm always told."},
+  {f:'me', t:"agrat"},
+  {f:'agrat', t:"I owe you a truth from our last game. Here: she's practising the words in the bath."},
+  {f:'me', t:"i didn't need that"},
+  {f:'agrat', t:"You'll treasure it on Tuesday. A bead's in the post."},
+]},
+],
+
+});
+
+/* ══════════════════════════════════════════════════════════════
+   ERA COMPOSITION
+   'xuanfang'  → the current week in Huanglong (default)
+   'lahairoi'  → the archived Rabelle College bank, as it was
+   ══════════════════════════════════════════════════════════════ */
+const ERA = 'xuanfang';
+
+// Threads whose archived scenes hold up anywhere; in Xuanfang they
+// draw from both banks.
+const ERA_NEUTRAL = ['t_cantarella','t_carlotta','t_phrolova','t_roccia','t_brant','t_nuwa','t_agrat','t_nivora'];
+
+const SCENES = (() => {
+  const out = {};
+  const era = ERA === 'lahairoi' ? SCENES_LAHAIROI : SCENES_XUANFANG;
+  const ids = new Set([...Object.keys(SCENES_LAHAIROI), ...Object.keys(era)]);
+  ids.forEach(id => {
+    if (ERA === 'lahairoi') { out[id] = SCENES_LAHAIROI[id] || []; return; }
+    const arch = ERA_NEUTRAL.includes(id) ? (SCENES_LAHAIROI[id] || []) : [];
+    out[id] = [...(era[id] || []), ...arch];
+  });
+  return out;
+})();
